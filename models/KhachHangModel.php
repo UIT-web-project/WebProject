@@ -1,24 +1,21 @@
 <?php 
 
-
 	
 	defined('BASEPATH') OR exit('No direct script access allowed');
 	
-	class AdminModel extends CI_Model {
+	class KhachHangModel extends CI_Model {
 	
 		public function getData()
 		{
 			$this->db->select('*');
-			// $this->db->from('sanpham');
-			$data = $this->db->get('sanpham');
+			$data = $this->db->get('khachhang');
 			$data = $data->result_array();
 			return $data;
 		}
 	
 	}
 	
-	/* End of file AdminModel.php */
+	/* End of file KhachHangModel.php */
 	
-
 
 ?>

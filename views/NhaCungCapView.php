@@ -216,13 +216,14 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <?php foreach ($arrResult as $item) : ?>
                                                     <tr>
-                                                        <td class="text-center">1</td>
-                                                        <td>Apple</td>
-                                                        <td>apple@gmail.com</td>
-                                                        <td>123456666</td>
-                                                        <td>32 Cách Mạng Tháng 8, P.6, Quận 3, TP HCM</td>
-                                                        <td>https://www.apple.com.vn/</td>
+                                                        <td class="text-center"><?php echo $item['MaNCC'] ?></td>
+                                                        <td><?php echo $item['TenNCC'] ?></td>
+                                                        <td><?php echo $item['Email'] ?></td>
+                                                        <td><?php echo $item['SDT'] ?></td>
+                                                        <td><?php echo $item['DiaChi'] ?></td>
+                                                        <td><?php echo $item['Website'] ?></td>
                                                         <td class="text-center">
                                                             <a class="btn btn-success btn-xs" href="SuaNCCController"
                                                                 role="button">
@@ -237,6 +238,7 @@
                                                             </a>
                                                         </td>
                                                     </tr>
+                                                    <?php endforeach ?>
                                                 </tbody>
                                             </table>
                                         </div>

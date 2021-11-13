@@ -7,7 +7,12 @@
 	
 		public function index()
 		{
-			$this->load->view('HoaDonView');
+			$this->load->model('HoaDonModel');
+			$data = $this->HoaDonModel->getData();
+			$data = array("arrResult" => $data);
+
+			// truyền data sang view
+			$this->load->view('HoaDonView', $data);
 			
 		}
 	

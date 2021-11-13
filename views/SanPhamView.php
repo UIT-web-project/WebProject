@@ -216,17 +216,18 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <?php foreach ($arrResult as $item) : ?>
                                                     <tr>
-                                                        <td class="text-center">1</td>
-                                                        <td style="font-size: 16px;">Iphone 13 Pro Max</td>
+                                                        <td class="text-center"><?php echo $item['masp'] ?></td>
+                                                        <td style="font-size: 16px;"><?php echo $item['tensp'] ?></td>
                                                         <td style="width:120px">
-                                                            <img src="img/iphone-13-promax.png"
-                                                                alt="Điện thoại Iphone 13 ProMax"
+                                                            <img src="<?php echo $item['hinhanh'] ?>"
+                                                                alt="hình ảnh cho <?php echo $item['tensp'] ?>"
                                                                 class="img-responsive">
                                                         </td>
-                                                        <td>Điện thoại</td>
-                                                        <td>Apple</td>
-                                                        <td>Không</td>
+                                                        <td><?php echo $item['TenLoaiSP'] ?></td>
+                                                        <td><?php echo $item['TenTH'] ?></td>
+                                                        <td><?php echo $item['mota'] ?></td>
                                                         <td class="text-center">
                                                             <a class="btn btn-success btn-xs" href="SuaSPController"
                                                                 role="button">
@@ -241,6 +242,7 @@
                                                             </a>
                                                         </td>
                                                     </tr>
+                                                    <?php endforeach ?>
                                                 </tbody>
                                             </table>
                                         </div>

@@ -205,6 +205,10 @@
                                                     <tr>
                                                         <th class="text-center">Mã KH</th>
                                                         <th>Tên khách hàng</th>
+                                                        <th>Giới Tính</th>
+                                                        <th>CMND</th>
+                                                        <th>Email</th>
+                                                        <th>Mật khẩu</th>
                                                         <th class="text-center">SĐT</th>
                                                         <th>Địa chỉ</th>
                                                         <th>Loại khách</th>
@@ -212,12 +216,17 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <?php foreach ($arrResult as $item) : ?>
                                                     <tr>
-                                                        <td class="text-center">1</td>
-                                                        <td>Nguyễn Văn A</td>
-                                                        <td class="text-center">0332248992</td>
-                                                        <td>33, Nguyễn Hữa Cảnh, Quận 6, Thành phố Hồ Chí Minh</td>
-                                                        <td>Khách VIP</td>
+                                                        <td class="text-center"><?php echo $item['MaKH'] ?></td>
+                                                        <td><?php echo $item['TenKH'] ?></td>
+                                                        <td><?php echo $item['GioiTinh'] ?></td>
+                                                        <td><?php echo $item['CMND'] ?></td>
+                                                        <td><?php echo $item['Email'] ?></td>
+                                                        <td><?php echo $item['MatKhau'] ?></td>
+                                                        <td class="text-center"><?php echo $item['SDT'] ?></td>
+                                                        <td><?php echo $item['DiaChi'] ?></td>
+                                                        <td><?php echo $item['LoaiKH'] ?></td>
                                                         <td class="text-center">
                                                             <a class="btn btn-info btn-xs" href="XemKHController"
                                                                 role="button">
@@ -232,6 +241,7 @@
                                                             </a>
                                                         </td>
                                                     </tr>
+                                                    <?php endforeach ?>
                                                 </tbody>
                                             </table>
                                         </div>

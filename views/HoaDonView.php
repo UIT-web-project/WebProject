@@ -218,6 +218,7 @@
                                                         <th class="text-center">Mã HĐ</th>
                                                         <th>Khách hàng</th>
                                                         <th>Tổng tiền</th>
+                                                        <th>Số % KM</th>
                                                         <th>Tình trạng</th>
                                                         <th class="text-center">Tiền nhận</th>
                                                         <th class="text-center">Tiền trả</th>
@@ -225,18 +226,24 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <?php foreach ($arrResult as $item) : ?>
                                                     <tr>
-                                                        <td class="text-center">1</td>
-                                                        <td>Nguyễn Văn A</td>
-                                                        <td>30000000</td>
+                                                        <td class="text-center"><?php echo $item['MaHD'] ?></td>
+                                                        <td><?php echo $item['TenKH'] ?></td>
+                                                        <td><?php echo $item['TongTienTT'] ?></td>
+                                                        <td><?php echo $item['SoPTKM']; echo " %"; ?></td>
                                                         <td class="text-center">
                                                             <a href="HoaDonController">
-                                                                <span
-                                                                    class="glyphicon glyphicon-remove-circle maudo"></span>
+                                                                <?php 
+																	if($item['TinhTrangTT'] == 1) 
+																		echo "Đã thanh toán";
+																	else
+																		echo "Chưa thanh toán";
+																?>
                                                             </a>
                                                         </td>
-                                                        <td class="text-center">0</td>
-                                                        <td class="text-center">0</td>
+                                                        <td class="text-center"><?php echo $item['SoTienNhan'] ?></td>
+                                                        <td class="text-center"><?php echo $item['SoTienTra'] ?></td>
                                                         <td class="text-center">
                                                             <a class="btn btn-info btn-xs" href="CTHDController"
                                                                 role="button">
@@ -251,6 +258,7 @@
                                                             </a>
                                                         </td>
                                                     </tr>
+                                                    <?php endforeach ?>
                                                 </tbody>
                                             </table>
                                         </div>

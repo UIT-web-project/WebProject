@@ -1,24 +1,22 @@
 <?php 
 
-
 	
 	defined('BASEPATH') OR exit('No direct script access allowed');
 	
-	class AdminModel extends CI_Model {
+	class KhuyenMaiModel extends CI_Model {
 	
 		public function getData()
 		{
 			$this->db->select('*');
-			// $this->db->from('sanpham');
-			$data = $this->db->get('sanpham');
+			$this->db->join('sanpham', 'sanpham.masp = khuyenmai.MaSP');
+			$data = $this->db->get('khuyenmai');
 			$data = $data->result_array();
 			return $data;
 		}
 	
 	}
 	
-	/* End of file AdminModel.php */
+	/* End of file KhuyenMaiModel.php */
 	
-
 
 ?>

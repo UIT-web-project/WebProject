@@ -210,17 +210,26 @@
                                                         <th>Tên nhân viên</th>
                                                         <th class="text-center">SĐT</th>
                                                         <th>Địa chỉ</th>
+                                                        <th>Email</th>
+                                                        <th>Mật Khẩu</th>
                                                         <th>Loại nhân viên</th>
+                                                        <th>Lương</th>
+                                                        <th>Ngày vào làm</th>
                                                         <th class="text-center" colspan="2">Thao tác</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <?php foreach ($arrResult as $item) : ?>
                                                     <tr>
-                                                        <td class="text-center">1</td>
-                                                        <td>Nguyễn Văn B</td>
-                                                        <td class="text-center">0338003232</td>
-                                                        <td>21, P.3, Quận 9, Thành phố Hồ Chí Minh</td>
-                                                        <td>Quản lý</td>
+                                                        <td class="text-center"><?php echo $item['MaNV'] ?></td>
+                                                        <td><?php echo $item['TenNV'] ?></td>
+                                                        <td class="text-center"><?php echo $item['SDT'] ?></td>
+                                                        <td><?php echo $item['DiaChi'] ?></td>
+                                                        <td><?php echo $item['Email'] ?></td>
+                                                        <td><?php echo $item['MatKhau'] ?></td>
+                                                        <td><?php echo $item['LoaiNV'] ?></td>
+                                                        <td><?php echo $item['Luong'] ?></td>
+                                                        <td><?php echo $item['NgayVL'] ?></td>
                                                         <td class="text-center">
                                                             <a class="btn btn-success btn-xs" href="SuaNVController"
                                                                 role="button">
@@ -235,6 +244,7 @@
                                                             </a>
                                                         </td>
                                                     </tr>
+                                                    <?php endforeach ?>
                                                 </tbody>
                                             </table>
                                         </div>

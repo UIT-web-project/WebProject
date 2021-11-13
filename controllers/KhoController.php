@@ -7,8 +7,12 @@
 	
 		public function index()
 		{
-			$this->load->view('KhoView');
-			
+			$this->load->model('KhoModel');
+			$data = $this->KhoModel->getData();
+			$data = array("arrResult" => $data);
+
+			// truyền data sang view
+			$this->load->view('KhoView', $data);
 		}
 	
 	}

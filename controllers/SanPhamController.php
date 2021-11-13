@@ -7,8 +7,12 @@
 	
 		public function index()
 		{
-			$this->load->view('SanPhamView');
-			
+			$this->load->model('SanPhamModel');
+			$data = $this->SanPhamModel->getData();
+			$data = array("arrResult" => $data);
+
+			// truyền data sang view
+			$this->load->view('SanPhamView', $data);
 		}
 	
 	}

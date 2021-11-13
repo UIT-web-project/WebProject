@@ -219,15 +219,20 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php foreach ($arrResult as $item) : ?>
                                                 <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td>33, Nguyễn Hữa Cảnh, Quận 6, Thành phố Hồ Chí Minh</td>
-                                                    <td>Nguyễn Văn C</td>
-                                                    <td class="text-center">0332343098</td>
+                                                    <td class="text-center"><?php echo $item['MaHD'] ?></td>
+                                                    <td>Địa chỉ nhận hàng</td>
+                                                    <td><?php echo $item['TenNV'] ?></td>
+                                                    <td class="text-center"><?php echo $item['SDT'] ?></td>
                                                     <td class="text-center">
                                                         <a href="GiaoHangController">
-                                                            <span
-                                                                class="glyphicon glyphicon-remove-circle maudo"></span>
+                                                            <?php 
+																if($item['TinhTrangGH'] == 1)
+																	echo "Đã giao hàng";
+																else 
+																	echo "Chưa giao hàng";
+															?>
                                                         </a>
                                                     </td>
                                                     <td class="text-center">
@@ -238,6 +243,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
+                                                <?php endforeach ?>
                                             </tbody>
                                         </table>
                                     </div>

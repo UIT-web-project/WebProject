@@ -224,17 +224,22 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <?php foreach ($arrResult as $item) : ?>
                                                     <tr>
-                                                        <td class="text-center">1</td>
-                                                        <td>Apple</td>
-                                                        <td>500000000</td>
+                                                        <td class="text-center"><?php echo $item['MaPN'] ?></td>
+                                                        <td><?php echo $item['TenNCC'] ?></td>
+                                                        <td><?php echo $item['ThanhTien'] ?></td>
                                                         <td class="text-center">
                                                             <a href="HoaDonController">
-                                                                <span
-                                                                    class="glyphicon glyphicon-ok-circle mauxanh18"></span>
+                                                                <?php 
+																	if($item['TinhTrangTT'] == 1)
+																		echo "Đã thanh toán";
+																	else
+																		echo "Chưa thanh toán";
+																?>
                                                             </a>
                                                         </td>
-                                                        <td>Nguyễn Văn B</td>
+                                                        <td><?php echo $item['TenNV'] ?></td>
                                                         <td class="text-center">
                                                             <a class="btn btn-info btn-xs" href="CTPNController"
                                                                 role="button">
@@ -249,6 +254,7 @@
                                                             </a>
                                                         </td>
                                                     </tr>
+                                                    <?php  endforeach ?>
                                                 </tbody>
                                             </table>
                                         </div>

@@ -6,9 +6,13 @@
 	
 		public function index()
 		{
-			// $this->load->helper('url');
-			$this->load->view('AdminView');
-			// echo 1;
+			$this->load->model('AdminModel');
+			$data = $this->AdminModel->getData();
+			$data = array("arrResult" => $data);
+
+			// truyền data sang view
+			$this->load->view('AdminView', $data);
+			
 		}
 	
 	}

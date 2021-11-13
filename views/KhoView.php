@@ -242,10 +242,11 @@
                                                     <th>Vị trí</th>
                                                     <th class="text-center">Thao tác</th>
                                                 </tr>
+                                                <?php foreach ($arrResult as $item) : ?>
                                                 <tr class="onRow">
-                                                    <td class="text-center">1</td>
-                                                    <td>HCM</td>
-                                                    <td>Tp Hồ Chí Minh</td>
+                                                    <td class="text-center"><?php echo $item['makho'] ?></td>
+                                                    <td><?php echo $item['tenkho'] ?></td>
+                                                    <td><?php echo $item['vitri'] ?></td>
                                                     <td class="text-center">
                                                         <a class="btn btn-danger btn-xs" href="KhoController"
                                                             onclick="return confirm('Xác nhận xóa kho này ?')"
@@ -254,6 +255,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
+                                                <?php endforeach ?>
                                             </table>
                                         </div>
                                         <div class="row">
