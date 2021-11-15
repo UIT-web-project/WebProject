@@ -1,3 +1,5 @@
+> last update ***config***: 10PM 15/11 (huuthang201)
+
 # chạy thử web
 ### B1
 - tải CodeIgniter: https://github.com/bcit-ci/CodeIgniter
