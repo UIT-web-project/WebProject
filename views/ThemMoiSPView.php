@@ -21,7 +21,7 @@
 <body class="skin-blue sidebar-mini">
     <script type="text/javascript" src="https://www.gstatic.com/charts/45/loader.js"></script>
     <div class="wrapper">
-        <form>
+        <form method="post" action="<?php echo base_url();?>index.php/ThemMoiSPController/ThemSP">
             <header class="main-header">
                 <a href="adminController" class="logo">
                     <span class="logo-lg">Quản trị hệ thống</span>
@@ -69,12 +69,14 @@
                             </li>
                             <li class="dropdown user user-menu" style="height: 52px; padding: 0px">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="img/user-group.png" class="user-image" alt="User Image">
+                                    <img src="<?php echo base_url() ?>img/user-group.png" class="user-image"
+                                        alt="User Image">
                                     <span class="hidden-xs">ADMIN</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="user-header">
-                                        <img src="img/user-group.png" class="img-circle" alt="User Image">
+                                        <img src="<?php echo base_url() ?>img/user-group.png" class="img-circle"
+                                            alt="User Image">
                                         <p>ADMIN<small>0167892615</small></p>
                                     </li>
                                     <li class="user-footer">
@@ -188,7 +190,7 @@
                     </h1>
                     <div class="breadcrumb">
                         <a class="btn btn-primary btn-sm" href="SanPhamController" role="button">
-                            <span class="glyphicon glyphicon-floppy-save"></span>Lưu
+                            <span class="glyphicon glyphicon-floppy-save"></span><input type="submit" value="Lưu">
                         </a>
                         <a class="btn btn-primary btn-sm" href="SanPhamController" role="button">
                             <span class="glyphicon glyphicon-remove do_nos"></span>Thoát
@@ -204,7 +206,7 @@
                                         <div class="col-md-8" style="border-right: ridge;">
                                             <div class="form-group">
                                                 <label>Tên sản phẩm</label>
-                                                <input type="text" class="form-control" name="name" style="width:100%"
+                                                <input type="text" class="form-control" name="tensp" style="width:100%"
                                                     placeholder="Tên sản phẩm">
                                             </div>
                                             <div class="row">
@@ -376,52 +378,17 @@
                                                                 <th class="text-center">Thao tác</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th class="text-center" style="font-weight: 300;">1</th>
-                                                                <th style="font-weight: 300;">Điện thoại</th>
-                                                                <th class="text-center">
-                                                                    <a class="btn btn-danger btn-xs"
-                                                                        onclick="return confirm('Xác nhận xóa Loại sản phẩm này ?')"
-                                                                        href="ThemMoiSPController" role="button">
-                                                                        <span
-                                                                            class="glyphicon glyphicon-trash"></span>Xóa
-                                                                    </a>
-                                                                </th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th class="text-center" style="font-weight: 300;">2</th>
-                                                                <th style="font-weight: 300;">Máy tính bảng</th>
-                                                                <th class="text-center">
-                                                                    <a class="btn btn-danger btn-xs"
-                                                                        onclick="return confirm('Xác nhận xóa Loại sản phẩm này ?')"
-                                                                        href="ThemMoiSPController" role="button">
-                                                                        <span
-                                                                            class="glyphicon glyphicon-trash"></span>Xóa
-                                                                    </a>
-                                                                </th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th class="text-center" style="font-weight: 300;">3</th>
-                                                                <th style="font-weight: 300;">Phụ kiện</th>
-                                                                <th class="text-center">
-                                                                    <a class="btn btn-danger btn-xs"
-                                                                        onclick="return confirm('Xác nhận xóa Loại sản phẩm này ?')"
-                                                                        href="ThemMoiSPController" role="button">
-                                                                        <span
-                                                                            class="glyphicon glyphicon-trash"></span>Xóa
-                                                                    </a>
-                                                                </th>
-                                                            </tr>
+                                                        <tbody id="XemLoaiSP">
                                                         </tbody>
                                                     </table>
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="text" name="ThemLoaiSP">
-                                                    <button class="btn btn-primary btn-sm" href="ThemMoiSPController"
-                                                        role="button">
+                                                    <button id="themloaisp" class="btn btn-primary btn-sm"
+                                                        href="ThemMoiSPController" role="button">
                                                         <span class="glyphicon glyphicon-plus"></span>Thêm LSP
                                                     </button>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -439,65 +406,16 @@
                                                                 <th class="text-center">Thao tác</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th class="text-center" style="font-weight: 300;">1</th>
-                                                                <th style="font-weight: 300;">Apple</th>
-                                                                <th class="text-center">
-                                                                    <a class="btn btn-danger btn-xs"
-                                                                        onclick="return confirm('Xác nhận xóa Thương hiệu này ?')"
-                                                                        href="ThemMoiSPController" role="button">
-                                                                        <span
-                                                                            class="glyphicon glyphicon-trash"></span>Xóa
-                                                                    </a>
-                                                                </th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th class="text-center" style="font-weight: 300;">2</th>
-                                                                <th style="font-weight: 300;">SamSung</th>
-                                                                <th class="text-center">
-                                                                    <a class="btn btn-danger btn-xs"
-                                                                        onclick="return confirm('Xác nhận xóa Thương hiệu này ?')"
-                                                                        href="ThemMoiSPController" role="button">
-                                                                        <span
-                                                                            class="glyphicon glyphicon-trash"></span>Xóa
-                                                                    </a>
-                                                                </th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th class="text-center" style="font-weight: 300;">3</th>
-                                                                <th style="font-weight: 300;">Xiaomi</th>
-                                                                <th class="text-center">
-                                                                    <a class="btn btn-danger btn-xs"
-                                                                        onclick="return confirm('Xác nhận xóa Thương hiệu này ?')"
-                                                                        href="ThemMoiSPController" role="button">
-                                                                        <span
-                                                                            class="glyphicon glyphicon-trash"></span>Xóa
-                                                                    </a>
-                                                                </th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th class="text-center" style="font-weight: 300;">4</th>
-                                                                <th style="font-weight: 300;">Oppo</th>
-
-                                                                <th class="text-center">
-                                                                    <a class="btn btn-danger btn-xs"
-                                                                        onclick="return confirm('Xác nhận xóa Thương hiệu này ?')"
-                                                                        href="ThemMoiSPController" role="button">
-                                                                        <span
-                                                                            class="glyphicon glyphicon-trash"></span>Xóa
-                                                                    </a>
-                                                                </th>
-                                                            </tr>
+                                                        <tbody id="XemTH">
                                                         </tbody>
                                                     </table>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" name="ThemTH">
-                                                    <a class="btn btn-primary btn-sm" href="ThemMoiSPController"
-                                                        role="button">
+                                                    <input type="text" name="ThemTH" class="ThemTH">
+                                                    <button id="themthuonghieu" class="btn btn-primary btn-sm"
+                                                        href="ThemMoiSPController" role="button">
                                                         <span class="glyphicon glyphicon-plus"></span>Thêm TH
-                                                    </a>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -510,6 +428,7 @@
             </div>
         </form>
     </div>
+
     <!-- jQuery 2.2.3 -->
     <script src="<?php echo base_url() ?>js/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
@@ -517,5 +436,131 @@
     <!-- AdminLTE App -->
     <script src="<?php echo base_url() ?>js/app.min.js"></script>
 </body>
+<script>
+$(document).ready(function() {
+    //load loại sản phẩm
+    XemLoaiSP();
+    //load thương hiệu
+    XemTH();
+});
+// begin: Thêm xóa sửa loại sản phẩm
+//thêm loại sản phẩm
+$('body').on('click', '#themloaisp', function(e) {
+    e.preventDefault();
+    var data = $('input[name=ThemLoaiSP]').val();
+    $.ajax({
+        url: '<?=base_url()?>index.php/ThemMoiSPController/ThemLoaiSP',
+        type: 'POST',
+        async: true,
+        cache: false,
+        data: {
+            data: data
+        },
+        success: function(data) {
+            console.log(data);
+        }
+    });
+    XemLoaiSP();
+    $('input[name=ThemLoaiSP]').val('');
+});
+// xem loại sản phẩm
+function XemLoaiSP() {
+    $.ajax({
+        url: '<?=base_url()?>index.php/ThemMoiSPController/XemLoaiSP',
+        type: 'POST',
+        success: function(data) {
+            $("#XemLoaiSP").html(data);
+        }
+    });
+}
+//xóa loại sản phẩm
+function XoaLoaiSP(maloaisp) {
+    if (confirm("Bạn có chắc chắn muốn xóa loại sản phẩm này ? ")) {
+        $.ajax({
+            url: '<?=base_url()?>index.php/ThemMoiSPController/XoaLoaiSP',
+            type: 'POST',
+            async: true,
+            cache: false,
+            data: {
+                maloaisp: maloaisp
+            },
+            success: function(data) {
+                if (data == 1) {
+                    alert("Xóa thành công");
+                } else {
+                    alert("Xóa thất bại");
+                }
+            }
+        });
+    }
+    XemLoaiSP();
+}
+// end: thêm xóa sửa loại sản phẩm
+
+//begin: thêm xóa sửa thương hiệu
+
+//thêm thương hiệu
+/**
+ * Hữu Thắng 14:40 15/11/2021
+ * note: keypress Enter not working or work wrong 
+ * -> don't use it
+ */
+$('body').on('click', '#themthuonghieu', function(e) {
+    e.preventDefault();
+    var data = $('input[name=ThemTH]').val();
+    $.ajax({
+        url: '<?=base_url()?>index.php/ThemMoiSPController/ThemTH',
+        type: 'POST',
+        async: true,
+        cache: false,
+        data: {
+            data: data
+        },
+        success: function(data) {
+            console.log(data);
+        }
+    });
+    XemTH();
+    $('input[name=ThemTH]').val('');
+});
+
+// xem thuong hiệu
+function XemTH() {
+    $.ajax({
+        url: '<?=base_url()?>index.php/ThemMoiSPController/XemTH',
+        type: 'POST',
+        success: function(data) {
+            $("#XemTH").html(data);
+        }
+    });
+}
+// xóa thương hiệu
+function XoaTH(math) {
+    if (confirm("Bạn có chắc chắn muốn xóa tên thương hiệu này ? ")) {
+        $.ajax({
+            url: '<?=base_url()?>index.php/ThemMoiSPController/XoaTH',
+            type: 'POST',
+            async: true,
+            cache: false,
+            data: {
+                math: math
+            },
+            success: function(data) {
+                if (data == 1) {
+                    alert("Xóa thành công");
+                } else {
+                    alert("Xóa thất bại");
+                }
+            }
+        });
+    }
+    XemTH();
+}
+//end: thêm xóa sửa thương hiệu
+</script>
+
+
+
+
 
 </html>
