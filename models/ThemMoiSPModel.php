@@ -46,6 +46,64 @@
 			return $this->db->delete($table, array('MaTH' => $math));
 		}
 		// end: Thêm xóa sửa thương hiệu
+		
+		// begin: Thêm sản phẩm
+		// load loại sản phẩm
+		public function XemLoaiSP_inThemSP()
+		{
+			$this->db->select('*');
+			return $this->db->get('loaisp');
+		}
+		// load thương hiệu
+		public function XemTH_inThemSP()
+		{
+			$this->db->select('*');
+			return $this->db->get('thuonghieu');
+		}
+		// tiến hành thêm sản phẩm
+		public function ThemMoiSP($tensp, $hinhanh, $mota, $maloaisp, $math)
+		{
+			$data = array(
+				'masp' => "",
+				'tensp' => $tensp,
+				'hinhanh' => $hinhanh,
+				'mota' => $mota,
+				'maloaisp' => $maloaisp,
+				'math' => $math
+			);
+			$this->db->insert('sanpham', $data);
+			return $this->db->insert_id();
+		}
+		// sản phẩm được truyền đến cuối cùng
+		public function XemSPCuoiCung()
+		{
+			$this->db->select('*');
+			$this->db->from('sanpham');
+			$id=$this->db->insert_id(); //its return last insert item on table   
+     		echo $id;
+		}
+		// thông tin sản phẩm
+		public function ThemThongTinSP($masp, $kho, $gia, $giakm, $soluong, $mausac, $ram, $bonhotrong, $pin, $kichthuongmanhinh, $cameratruoc, $camerasau, $cpu)
+		{
+			$data = array(
+				'masp' => $masp,
+				'MaKho' => $kho,
+				'Gia' => $gia,
+				'GiaKM' => $giakm,
+				'SoLuong' => $soluong,
+				'mausac' => $mausac,
+				'ram' => $ram,
+				'bonhotrong' => $bonhotrong,
+				'pin' => $pin,
+				'kichthuongmanhinh' => $kichthuongmanhinh,
+				'cameratruoc' => $cameratruoc,
+				'camerasau' => $camerasau,
+				'cpu' => $cpu
+			);
+			$this->db->insert('thongtinsp', $data);
+			return $this->db->insert_id();
+		}
+		// end: Thêm sản phẩm
 	
 	}
 	
