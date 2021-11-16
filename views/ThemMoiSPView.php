@@ -21,7 +21,8 @@
 <body class="skin-blue sidebar-mini">
     <script type="text/javascript" src="https://www.gstatic.com/charts/45/loader.js"></script>
     <div class="wrapper">
-        <form method="post" action="<?php echo base_url();?>index.php/ThemMoiSPController/ThemSP">
+        <form method="post" enctype="multipart/form-data"
+            action="<?php echo base_url();?>index.php/ThemMoiSPController/ThemSP">
             <header class="main-header">
                 <a href="adminController" class="logo">
                     <span class="logo-lg">Quản trị hệ thống</span>
@@ -214,23 +215,16 @@
                                                     <div class="col-md-6" style="padding-left: 0px;">
                                                         <div class="form-group">
                                                             <Label>Loại sản phẩm</Label>
-                                                            <select name="loaisp" class="form-control">
-                                                                <option value>[--Chọn loại sản phẩm--]</option>
-                                                                <option value="1">Điện thoại</option>
-                                                                <option value="2">Máy tính bảng</option>
-                                                                <option value="3">Phụ kiện</option>
+                                                            <select name="loaisp" class="form-control"
+                                                                id="XemLoaiSP_inThemSP">
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6" style="padding-right: 0px;">
                                                         <div class="form-group">
                                                             <Label>Thương hiệu</Label>
-                                                            <select name="thuonghieu" class="form-control">
-                                                                <option value>[--Chọn thương hiệu--]</option>
-                                                                <option value="1">Apple</option>
-                                                                <option value="2">SamSung</option>
-                                                                <option value="3">Xiaomi</option>
-                                                                <option value="4">oppo</option>
+                                                            <select name="thuonghieu" class="form-control"
+                                                                id="XemTH_inThemSP">
                                                             </select>
                                                         </div>
                                                     </div>
@@ -239,21 +233,21 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="col-md-6" style="padding-left: 0px;">
-                                                        <div class="form-group">
+                                                        <!-- <div class="form-group">
                                                             <label>Hình đại diện</label>
                                                             <input type="file" id="image_list" name="img" multiple
                                                                 required style="width: 100%">
-                                                        </div>
+                                                        </div> -->
                                                         <div class="form-group">
                                                             <label>Hình ảnh sản phẩm</label>
-                                                            <input type="file" id="image_list" name="image_list[]"
+                                                            <input type="file" id="image_list" name="hinhanh"
                                                                 multiple="multiple" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6" style="padding-right: 0px;">
                                                         <div class="form-group">
                                                             <label>Mô tả</label>
-                                                            <textarea name="sortDesc" class="form-control"
+                                                            <textarea name="mota" class="form-control"
                                                                 style="height: 85px;" placeholder="Mô tả"></textarea>
                                                         </div>
                                                     </div>
@@ -266,31 +260,35 @@
                                                     <div class="col-md-6" style="padding-left: 0px;">
                                                         <div class="form-group">
                                                             <label>Giá</label>
-                                                            <input name="price" class="form-control" type="number"
+                                                            <input name="gia" class="form-control" type="number"
                                                                 value="0" min="0" step="5000">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6" style="padding-right: 0px;">
                                                         <div class="form-group">
-                                                            <label>Giá khuyến mãi</label>
-                                                            <input name="price_dis" class="form-control" type="number"
-                                                                value="0" min="0" step="5000">
+                                                            <Label>Giá khuyến mãi</Label>
+                                                            <select name="giakm" class="form-control">
+                                                                <?php foreach ($arrResultKM as $item) : ?>
+                                                                <option value="<?php echo $item['MaKM'] ?>">
+                                                                    <?php 
+																	echo $item['MaKM']; echo " - "; echo $item['SoPTKM']; echo " %"
+                                                                    ?></option>
+                                                                <?php endforeach?>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-md-6" style="padding-left: 0px;">
-                                                        <label>Kho</label><br>
-                                                        <input type="checkbox" id="vehicle1" name="vehicle1">
-                                                        <label for="vehicle1"
-                                                            style="font-weight: 200; margin-right: 50;">
-                                                            HCM</label>
-                                                        <input type="checkbox" id="vehicle2" name="vehicle2">
-                                                        <label for="vehicle2"
-                                                            style="font-weight: 200; margin-right: 50;">
-                                                            Hà Nội</label>
-                                                        <input type="checkbox" id="vehicle3" name="vehicle3">
-                                                        <label for="vehicle3" style="font-weight: 200;"> Đà Nẵng</label>
+                                                        <div class="form-group">
+                                                            <Label>Kho</Label>
+                                                            <select name="kho" class="form-control">
+                                                                <?php foreach ($arrResultKho as $item) : ?>
+                                                                <option value="<?php echo $item['makho'] ?>">
+                                                                    <?php echo $item['tenkho'] ?></option>
+                                                                <?php endforeach?>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-6" style="padding-right: 0px;">
                                                         <label>Số lượng</label>
@@ -325,7 +323,7 @@
                                                     <div class="col-md-6" style="padding-right: 0px;">
                                                         <div class="form-group">
                                                             <label>Kích thước màn hình</label>
-                                                            <input name="disp" class="form-control" type="number"
+                                                            <input name="kichthuocmh" class="form-control" type="number"
                                                                 value="0" min="0" max="100" step="0.1">
                                                         </div>
                                                     </div>
@@ -334,14 +332,14 @@
                                                     <div class="col-md-6" style="padding-left: 0px;">
                                                         <div class="form-group">
                                                             <label>Camera trước</label>
-                                                            <input name="camphu" class="form-control" type="text"
+                                                            <input name="camtruoc" class="form-control" type="text"
                                                                 placeholder="Camera trước">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6" style="padding-right: 0px;">
                                                         <div class="form-group">
                                                             <label>Camera sau</label>
-                                                            <input name="camchinh" class="form-control" type="text"
+                                                            <input name="camsau" class="form-control" type="text"
                                                                 placeholder="Camera sau">
                                                         </div>
                                                     </div>
@@ -350,7 +348,7 @@
                                                     <div class="col-md-6" style="padding-left: 0px;">
                                                         <div class="form-group">
                                                             <label>Màu sắc</label>
-                                                            <input name="mausat" class="form-control" type="text"
+                                                            <input name="mausac" class="form-control" type="text"
                                                                 placeholder="Màu sắc">
                                                         </div>
                                                     </div>
@@ -440,8 +438,12 @@
 $(document).ready(function() {
     //load loại sản phẩm
     XemLoaiSP();
+    // load loại sản phẩm trong phần thêm sản phẩm
+    XemLoaiSP_inThemSP();
     //load thương hiệu
     XemTH();
+    // load thương hiệu trong phần thêm sản phẩm
+    XemTH_inThemSP();
 });
 // begin: Thêm xóa sửa loại sản phẩm
 //thêm loại sản phẩm
@@ -460,7 +462,11 @@ $('body').on('click', '#themloaisp', function(e) {
             console.log(data);
         }
     });
+    // khi bấm thêm
+    // load loại sản phẩm
     XemLoaiSP();
+    // load loại sản phẩm trong phần thêm sản phẩm
+    XemLoaiSP_inThemSP();
     $('input[name=ThemLoaiSP]').val('');
 });
 // xem loại sản phẩm
@@ -493,16 +499,19 @@ function XoaLoaiSP(maloaisp) {
             }
         });
     }
+    // khi bấm xóa
+    // load loại sản phẩm
     XemLoaiSP();
+    // load loại sản phẩm trong phần thêm sản phẩm
+    XemLoaiSP_inThemSP();
 }
 // end: thêm xóa sửa loại sản phẩm
 
 //begin: thêm xóa sửa thương hiệu
-
 //thêm thương hiệu
 /**
  * Hữu Thắng 14:40 15/11/2021
- * note: keypress Enter not working or work wrong 
+ * warning note: keypress Enter not working or work wrong 
  * -> don't use it
  */
 $('body').on('click', '#themthuonghieu', function(e) {
@@ -520,7 +529,11 @@ $('body').on('click', '#themthuonghieu', function(e) {
             console.log(data);
         }
     });
+    // khi bấm thêm
+    // load thương hiệu
     XemTH();
+    // load thương hiệu trong phần thêm sản phẩm
+    XemTH_inThemSP();
     $('input[name=ThemTH]').val('');
 });
 
@@ -554,9 +567,39 @@ function XoaTH(math) {
             }
         });
     }
+    // khi bấm xóa
+    // load thương hiệu
     XemTH();
+    // load thương hiệu trong phần thêm sản phẩm
+    XemTH_inThemSP();
 }
 //end: thêm xóa sửa thương hiệu
+
+// begin: thêm sản phẩm
+// load loại sản phẩm
+function XemLoaiSP_inThemSP() {
+    $.ajax({
+        url: '<?=base_url()?>index.php/ThemMoiSPController/XemLoaiSP_inThemSP',
+        type: 'POST',
+        success: function(data) {
+            console.log(123);
+            $("#XemLoaiSP_inThemSP").html(data);
+        }
+    });
+}
+// load thương hiệu
+function XemTH_inThemSP() {
+    $.ajax({
+        url: '<?=base_url()?>index.php/ThemMoiSPController/XemTH_inThemSP',
+        type: 'POST',
+        success: function(data) {
+            $("#XemTH_inThemSP").html(data);
+        }
+    });
+}
+// thêm sản phẩm
+// thêm sản phẩm không dùng ajax, khi bấm thêm sẽ chuyển về trang danh sách sản phẩm
+// end: thêm sản phẩm
 </script>
 
 
