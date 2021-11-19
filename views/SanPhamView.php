@@ -239,7 +239,7 @@
                                                         </td>
                                                         <td class="text-center">
                                                             <a class="btn btn-danger btn-xs"
-                                                                href="<?php echo base_url()?>index.php/SanPhamController"
+                                                                href="<?php echo base_url()?>index.php/SanPhamController/XoaSP/?masp=<?php echo $item['masp'] ?>"
                                                                 onclick="return confirm('Xác nhận xóa sản phẩm này ?')"
                                                                 role="button">
                                                                 <span class="glyphicon glyphicon-trash"></span>Xóa
@@ -283,6 +283,7 @@
     <!-- AdminLTE App -->
     <script src="<?php echo base_url() ?>js/app.min.js"></script>
 </body>
+
 
 
 

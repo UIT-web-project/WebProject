@@ -31,6 +31,23 @@
 			$SoTrang = ceil($TongSoSanPham/$SoSPTrongTrang);
 			return $SoTrang;
 		}
+		// xóa thông tin sản phẩm
+		public function XoaTTSP($ttsp, $masp)
+		{
+			$this->db->select('*');
+			$this->db->join($ttsp, $ttsp.'.masp = sanpham.masp');
+			$this->db->where('sanpham.masp', $masp);
+			$data = $this->db->get('sanpham');
+			$data = $data->result_array();
+			$mattsp = $data[0]['mattsp'];
+			return $this->db->delete($ttsp, array('mattsp' => $mattsp));
+			// return $data[0]['mattsp'];
+		}
+		// xóa sản phẩm
+		public function XoaSP($table, $masp)
+		{
+			return $this->db->delete($table, array('masp' => $masp));
+		}
 	
 	}
 	
