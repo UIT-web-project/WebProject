@@ -1,4 +1,11 @@
+
+> last update: 1AM 20/11 (huuthang201)
 > last update ***config***: 10PM 15/11 (huuthang201)
+
+!Note:
+- SanPhamController.php line 35: edit base url
+- ..
+- 
 
 # chạy thử web
 ### B1
@@ -34,4 +41,9 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+```
+### B4: cấu hình url
+mở config/config.php chỉnh lại cho đúng location folder
+```
+$config['base_url'] = 'http://localhost/do_an_web_thu_2/';
 ```
