@@ -1,5 +1,6 @@
 
-> last update: 1AM 20/11 (huuthang201)
+> last update: 1AM 20/11 (huuthang201).
+> 
 > last update ***config***: 10PM 15/11 (huuthang201)
 
 !Note:
