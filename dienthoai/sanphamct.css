@@ -1,0 +1,281 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    text-align: center;
+}
+ul{
+    list-style: none;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav{
+    background-color: rgb(64, 88, 224);
+}
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav ul li, a{
+    color: black;
+}
+nav ul li:nth-child(1) button {
+    height: 50px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(1) button a{
+    font-size: 30px;
+}
+nav ul li:nth-child(1) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(2) button {
+    height: 50px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(2) button a{
+    font-size: 30px;
+}
+nav ul li:nth-child(2) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(3) button {
+    height: 50px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(3) button a{
+    font-size: 30px;
+}
+nav ul li:nth-child(3) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(4) button {
+    height: 50px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(4) button a{
+    font-size: 30px;
+}
+nav ul li:nth-child(4) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(5) button {
+    height: 50px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(5) button a{
+    font-size: 30px;
+}
+nav ul li:nth-child(5) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(6) button {
+    height: 50px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(6) button a{
+    font-size: 30px;
+}
+nav ul li:nth-child(6) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(7) button {
+    height: 55px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(7) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(7) button a{
+    font-size: 30px;
+}
+.container ul li{
+    position: relative;
+}
+.submenu{
+    position: absolute;
+    background-color: rgb(187, 190, 199);
+    width: 192px;
+    height: auto;
+    display: none;
+    z-index: 10;
+}
+.submenu ul{
+    display: flex;
+    flex-direction: column;
+}
+.container ul li:hover .submenu{
+    display: block;
+}
+.submenu ul li:hover a{
+    color: rgb(119, 73, 12);
+}
+li{
+    list-style: none;
+}
+
+.slider-content{
+    display: flex;
+}
+.slider-content-left-top-spct img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.slider-content-right {
+    margin-left: 50px;
+    width: 65%;
+    padding: 10px;
+}
+.slider-content-right h4{
+    font-size: 30px;
+}
+.slider-content-right-top{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 120px;
+}
+.slider-content-right-top button{
+    height: 65px;
+    width: 300px;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+table {
+    margin-top: 20px;
+    width: 700px;
+    height: 50px;
+}
+tr{
+    font-size: 20px;
+    width: 1000px;
+}
+th{
+    font-size: 20px;
+    width: 1000px;
+}
+
+
+.slider-content-left-top-dgsp{
+   border-width: 3px;
+   border-style: solid;
+   width: 100%;
+   height: 430px; 
+   position: relative;
+   border-radius: 5px;
+   margin-top: 15px;
+   margin-left: 3px;
+}
+.slider-content-left-top-dgsp-comment{
+    margin-top: 30px;
+    margin-left: 15px;
+}
+.form-ten{
+    margin-bottom: 15px;
+}
+.form-sdt{
+    margin-bottom: 15px;
+}
+.form-mail{
+    margin-bottom: 15px;
+}
+.form-nd{
+    margin-bottom: 30px;
+}
+.form-cauhoi button{
+    text-align: center;
+    margin-left: 240px;
+}
+.slider-content-right-top-buttom2{
+    margin-left: 50px;
+}
+/*-----------------------------------------*/
+footer{
+    background-color: rgb(190, 184, 184);
+    margin-top: 100px;
+    padding: 30px 0 0;
+    width: 100%;
+}
+.footer-content{
+    justify-content: space-evenly;
+    width: 100%;
+    display: inline-flex;   
+}
+.footer-content h3{
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.footer-content p{
+    margin-bottom: 6px;
+}
+.footer-content-icon{
+    margin-left: 580px;
+    padding: 50px ;
+}
+.footer-content-icon i{
+    font-size: 30px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+

@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+a {
+    text-decoration: none;
+}
+.container{
+    background-image: linear-gradient(rgb(71, 59, 173), rgb(133, 117, 120));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-login{
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 40px 30px;
+}
+.form-login h1{
+    margin-bottom: 40px;
+}
+.form-login button{
+    height: 35px;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    background-color: rgb(151, 146, 146);
+    cursor: pointer;
+}
+.form-text{
+    margin-bottom: 20px;
+    position: relative;
+}
+.form-text input{
+    width: 100%;
+    min-height: 30px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    cursor: text;
+}
+.form-text-password{
+    display: flex;
+}
+.form-text-password i{
+    cursor: pointer;
+    margin-left: -17px;
+}
+
