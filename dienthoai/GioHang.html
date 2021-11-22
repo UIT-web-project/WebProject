@@ -1,0 +1,178 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MU PHONE - Giỏ hàng</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="css/GioHang.css">
+</head>
+<body>
+    <header>
+        <img src="img/header.png" width="1380px" height="200px" alt="">
+    </header>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><button><i class="fas fa-home"></i><a href="index.html">Trang chủ</a></button></li>
+                <li><button><i class="fas fa-mobile-alt"></i><a href="sanpham.html">Sản phẩm</a></button></li>
+                <li><button><i class="fas fa-question"></i><a href="hoidap.html">Hỏi đáp</a></button></li>
+                <li><button><i class="fas fa-shopping-cart"></i><a href="GioHang.html">Giỏ hàng</a></button></li>
+                <li><button><i class="fas fa-sign-in-alt"></i><a href="login.html">Đăng nhập</a></button></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-content">
+        <div class=" breadcrumb-wrapper">
+            <ol class="breadcrumb breadcrumb-margin">
+                <li class="breadcrumb-item">
+                    <a href="index.html" class="link">
+                        Trang chủ
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">
+                    Giỏ hàng
+                </li>
+            </ol>
+        </div>
+        <div class="cart-title m-t-8 p-x-12 p-t-16 p-b-8 d-s-200">
+            <div class="cart-row">
+                <div class="cart-title__title p-x-12">
+                    <div class="f-s-p-20 f-w-500">Giỏ hàng</div>
+                </div>
+                <div class="cart-body text-center" style="display: flex;">
+                    <div class="col-xs-12 col-12 col-sm-12 col-md-8 col-lg-8">
+                        <table class="table table-list-product">
+                            <thead>
+                                <tr style="background: #f3f3f3;">
+                                    <th>Hình ảnh</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th class="text-center">Đơn giá</th>
+                                    <th class="text-center">Số lượng</th>
+                                    <th class="text-center">Thành tiền</th>
+                                    <th class="text-center">Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="img-product-cart">
+                                        <a href="">
+                                            <img src="img/2.jpg" alt="Điện thoại Iphone 13 Pro Max">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="" class="pull-left">
+                                            Điện thoại Iphone 13 Pro Max
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span class="amount">30.000.000</span>
+                                        <span>VNĐ</span>
+                                    </td>
+                                    <td>
+                                        <div class="quantity clearfix">
+                                            <input type="number" name="quanlity" value="1" min="1" max="1000" class="form-control">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="amount">30.000.000</span>
+                                        <span>VNĐ</span>
+                                    </td>
+                                    <td>
+                                        <a class="remove" title="Xóa">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn">
+                            <a href="sanpham.html">Tiếp tục mua hàng</a>
+                        </button>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="clearfix btn-submit" style="padding-left: 10px;margin-top: 20px;">
+                            <table class="table total-price" style="border: 1px solid #ececec;">
+                                <tbody>
+                                    <tr style="background: #f4f4f4;">
+                                        <td><h4>Tổng tiền</h4></td>
+                                        <td>
+                                            <strong>30.000.000</strong>
+                                            <strong>VNĐ</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h4>Mua hàng trực tiếp tại cửa hàng giảm giá 5%</h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h4>Nếu đặt online, bạn hãy đồng ý với điều khoản sử dụng & hướng dẫn hoàn trả.</h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <button type="button" onclick="window.location.href='DatHang.html'" class="btn-next-checkout">
+                                                Đặt hàng
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+    <footer>
+        <div class="container">
+            <div class="footer-content row">
+                <div class="footer-content-item">
+                    <h3>THÔNG TIN</h3>
+                    <p>Công ty</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                </div>
+                <div class="footer-content-item">
+                    <h3>LIÊN HỆ</h3>
+                    <p>Công ty</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                </div>
+                <div class="footer-content-item">
+                    <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+                    <p>Công ty</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                </div>
+                <div class="footer-content-item">
+                    <h3>CÁC ĐỐI TÁC</h3>
+                    <p>Công ty</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                    <p>Địa chỉ</p>
+                </div>
+            </div>
+            <div class="footer-content-icon">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-twitter"></i>
+            </div>
+            <div class="footer-logomu">
+                <img src="img/llogomu.jpg" alt="">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

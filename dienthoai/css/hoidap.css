@@ -1,0 +1,550 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    text-align: center;
+}
+ul{
+    list-style: none;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.container{
+    max-width: 1200px;
+    margin: auto;
+}
+nav{
+    background-color: rgb(64, 88, 224);
+    margin-top: -5px;
+}
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav ul li, a{
+    color: black;
+}
+nav ul li:nth-child(1) button {
+    height: 50px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(1) button a{
+    font-size: 30px;
+}
+nav ul li:nth-child(1) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(2) button {
+    height: 50px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(2) button a{
+    font-size: 30px;
+}
+nav ul li:nth-child(2) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(3) button {
+    height: 50px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(3) button a{
+    font-size: 30px;
+}
+nav ul li:nth-child(3) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(4) button {
+    height: 50px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(4) button a{
+    font-size: 30px;
+}
+nav ul li:nth-child(4) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(5) button {
+    height: 50px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(5) button a{
+    font-size: 30px;
+}
+nav ul li:nth-child(5) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(6) button {
+    height: 50px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(6) button a{
+    font-size: 30px;
+}
+nav ul li:nth-child(6) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(7) button {
+    height: 55px;
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: 1px solid rgb(70,68,68);
+    border-radius: 5px;
+    margin-right: 6px;
+    font-size: 30px;
+}
+nav ul li:nth-child(7) button:hover{
+    background-color: white;
+}
+nav ul li:nth-child(7) button a{
+    font-size: 30px;
+}
+.container ul li{
+    position: relative;
+}
+.submenu{
+    position: absolute;
+    background-color: rgb(187, 190, 199);
+    width: 192px;
+    height: auto;
+    display: none;
+    z-index: 10;
+}
+.submenu ul{
+    display: flex;
+    flex-direction: column;
+}
+.container ul li:hover .submenu{
+    display: block;
+}
+.submenu ul li:hover a{
+    color: rgb(119, 73, 12);
+}
+li{
+    list-style: none;
+}
+
+
+
+
+
+
+
+.containner{
+    margin-top: 20px;
+    background-color: white;
+    height: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.containner li:nth-child(1) button{
+    font-size: 20px;
+    margin-right: 10px;
+    border-radius: 30px;
+    margin-top: 20px;
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    cursor: pointer;
+}
+.containner li:nth-child(1) button:hover{
+    background-color: #c0c2c0;
+}
+.containner li:nth-child(2) button{
+    font-size: 20px;
+    margin-right: 10px;
+    border-radius: 30px;
+    margin-top: 20px;
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    cursor: pointer;
+}
+.containner li:nth-child(2) button:hover{
+    background-color: #c0c2c0;
+}
+.containner li:nth-child(3) button{
+    font-size: 20px;
+    margin-right: 10px;
+    border-radius: 30px;
+    margin-top: 20px;
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    cursor: pointer;
+}
+.containner li:nth-child(3) button:hover{
+    background-color: #c0c2c0;
+}
+.containner li:nth-child(4) button{
+    font-size: 20px;
+    margin-right: 10px;
+    border-radius: 30px;
+    margin-top: 20px;
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    cursor: pointer;
+}
+.containner li:nth-child(4) button:hover{
+    background-color: #c0c2c0;
+}
+.containner li:nth-child(5) button{
+    font-size: 20px;
+    margin-right: 10px;
+    border-radius: 30px;
+    margin-top: 20px;
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    cursor: pointer;
+}
+.containner li:nth-child(5) button:hover{
+    background-color: #c0c2c0;
+}
+.containner li:nth-child(6) button{
+    font-size: 20px;
+    margin-right: 10px;
+    border-radius: 30px;
+    margin-top: 20px;
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    cursor: pointer;
+}
+.containner li:nth-child(6) button:hover{
+    background-color: #c0c2c0;
+}
+.containner li:nth-child(7) button{
+    font-size: 20px;
+    margin-right: 10px;
+    border-radius: 30px;
+    margin-top: 20px;
+    height: 50px;
+    width: 100px;
+    background-color: white;
+    cursor: pointer;
+}
+.containner li:nth-child(7) button:hover{
+    background-color: #c0c2c0;
+}
+nav h3{
+    background-color: white;
+    font-size:33px;
+}
+
+nav{
+    margin-top: -3px;
+}
+.container-bg{
+    margin-top: 5px;
+    background-color: white;
+}
+nav ul li h3{
+    margin-top: 0;
+}
+
+
+.content-search{
+    width: 100%;
+    display: flex;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 90px;
+}
+nav ul li:nth-child(8){
+    position: relative;
+}
+nav ul li:nth-child(8) input{
+    height: 40px;
+    border-radius: 5px;
+    margin-left: 100px;
+    width: 400px;
+}
+nav ul li:nth-child(8) i{
+    position: absolute;
+    right: 12px;
+    line-height: 40px;
+    cursor: pointer;
+}
+/*----------------------------------khung hỏi đáp--------------------------------*/
+.post{
+    background-color: #fff;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 350px;
+}
+.post-content-1{
+   border-width: 2px;
+   display: flex;
+   width: 70%;
+   height: 154px; 
+   position: relative;
+   border-radius: 5px;
+   margin-left: 10px;
+   margin-top: 15px;
+   margin-bottom: 10px;
+   border-style: outset;
+}
+.post-content-1 img{
+    height: 150px;
+    width: 200px;
+}
+.post-content-2{
+    border-width: 2px;
+    display: flex;
+    width: 70%;
+    height: 154px; 
+    position: relative;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-style: outset;
+ }
+ .post-content-2 img{
+     height: 150px;
+     width: 200px;
+ }
+ .post-content-3{
+    border-width: 2px;
+    display: flex;
+    width: 70%;
+    height: 154px; 
+    position: relative;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-style: outset;
+ }
+ .post-content-3 img{
+     height: 150px;
+     width: 200px;
+ }
+ .post-content-4{
+    border-width: 2px;
+    display: flex;
+    width: 70%;
+    height: 154px; 
+    position: relative;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-style: outset;
+ }
+ .post-content-4 img{
+     height: 150px;
+     width: 200px;
+ }
+ .post-content-5{
+    border-width: 2px;
+    display: flex;
+    width: 70%;
+    height: 154px; 
+    position: relative;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-style: outset;
+ }
+ .post-content-5 img{
+     height: 150px;
+     width: 200px;
+ }
+ .post-content-6{
+    border-width: 2px;
+    display: flex;
+    width: 70%;
+    height: 154px; 
+    position: relative;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-style: outset;
+ }
+ .post-content-6 img{
+     height: 150px;
+     width: 200px;
+ }
+ .post-content-text{
+     margin-left: 20px;
+ }
+
+
+
+.content-form{
+    border-width: 2px;
+    width: 55%;
+    height: 580px; 
+    position: relative;
+    border-radius: 5px;
+    margin-left: 350px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    border-style: solid;
+ }
+ .content-form button{
+    width: 70px;
+    height: 35px;
+    margin-top: 30px;
+    margin-left: 350px;
+ }
+ .form-cauhoi h1{
+     text-align: center;
+ }
+ .form-ten{
+     font-size: 20px;
+     margin-left: 50px;
+ }
+ .content-form input{
+     height: 25px;
+     width: 300px;
+     margin-top: 10px;
+     margin-bottom: 25px;
+ }
+ .form-sdt{
+    font-size: 20px;
+    margin-left: 50px;
+}
+.form-mail{
+    font-size: 20px;
+    margin-left: 50px;
+}
+.form-nd{
+    font-size: 20px;
+    margin-left: 50px;
+}
+.form-nd textarea{
+    margin-top: 10px;
+    cursor: text;
+    font-size: 15px;
+}
+
+/*-------------footer----------------------*/
+footer{
+    background-color: rgb(190, 184, 184);
+    margin-top: 100px;
+    padding: 30px 0 0;
+    width: 100%;
+}
+.footer-content{
+    justify-content: space-evenly;
+    width: 100%;
+    display: inline-flex;   
+}
+.footer-content h3{
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.footer-content p{
+    margin-bottom: 6px;
+}
+.footer-content-icon{
+    margin-left: 450px;
+    padding: 50px ;
+}
+.footer-content-icon i{
+    font-size: 30px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.breadcrumb-wrapper{
+    margin-left: 90px;
+    margin-top: 20px;
+    display: flex;
+}
+
+.breadcrumb-margin {
+    margin-top: 5.5px;
+    margin-bottom: 5.5px;
+}
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.breadcrumb-item {
+    color: #444b52;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.link {
+    color: #0664f9;
+    position: relative;
+    display: inline-block;
+}
+
+.breadcrumb-item+.breadcrumb-item:before {
+    display: inline-block;
+    margin: 0 8px;
+    color: #cbd1d6;
+    font-size: 18px;
+    content: '/';
+}
+
+.breadcrumb-item.active {
+    color: #0664f9;
+}
