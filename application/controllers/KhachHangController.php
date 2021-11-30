@@ -7,8 +7,12 @@
 	
 		public function index()
 		{
-			$this->load->view('KhachHangView');
-			
+			$this->load->model('KhachHangModel');
+			$data = $this->KhachHangModel->getData();
+			$data = array("arrResult" => $data);
+
+			// truyền data sang view
+			$this->load->view('KhachHangView', $data);
 		}
 	
 	}

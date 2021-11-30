@@ -7,8 +7,12 @@
 	
 		public function index()
 		{
-			$this->load->view('NhaCungCapView');
-			
+			$this->load->model('NhaCungCapModel');
+			$data = $this->NhaCungCapModel->getData();
+			$data = array("arrResult" => $data);
+
+			// truyền data sang view
+			$this->load->view('NhaCungCapView', $data);
 		}
 	
 	}

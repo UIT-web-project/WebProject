@@ -274,9 +274,10 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php foreach ($arrResult as $item) : ?>
                                                 <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td>Iphone 13 Pro Max</td>
+                                                    <td class="text-center"><?php echo $item['masp'] ?></td>
+                                                    <td><?php echo $item['tensp'] ?></td>
                                                     <td>Nguyễn Văn A</td>
                                                     <td>0332248992</td>
                                                     <td>30,000,000đ</td>
@@ -305,6 +306,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
+                                                <?php endforeach ?>
                                             </tbody>
                                         </table>
                                     </div>

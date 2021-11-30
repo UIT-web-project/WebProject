@@ -22,7 +22,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/45/loader.js"></script>
     <div class="wrapper">
         <header class="main-header">
-            <a href="adminController" class="logo">
+            <a href="<?php echo base_url()?>index.php/adminController" class="logo">
                 <span class="logo-lg">Quản trị hệ thống</span>
             </a>
             <nav class="navbar navbar-static-top" style="height: 50px">
@@ -41,7 +41,7 @@
                                 <li>
                                     <ul class="menu">
                                         <li>
-                                            <a href="adminController">
+                                            <a href="<?php echo base_url()?>index.php/adminController">
                                                 <i class="fa fa-users text-aqua"></i>
                                                 11 Đơn hàng chưa duyệt
                                             </a>
@@ -51,7 +51,7 @@
                                 <li>
                                     <ul class="menu">
                                         <li>
-                                            <a href="GiaoHangController">
+                                            <a href="<?php echo base_url()?>index.php/GiaoHangController">
                                                 <i class="fa fa-users text-aqua"></i>
                                                 6 Đơn hàng đang giao
                                             </a>
@@ -78,7 +78,8 @@
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="SuaNVController" class="btn btn-default btn-flat">Chi tiết</a>
+                                        <a href="<?php echo base_url()?>index.php/SuaNVController"
+                                            class="btn btn-default btn-flat">Chi tiết</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="admin/user/logout.html" class="btn btn-default btn-flat">Thoát</a>
@@ -95,60 +96,60 @@
             <section class="sidebar">
                 <ul class="sidebar-menu">
                     <li class="treeview">
-                        <a href="ThongKeController">
+                        <a href="<?php echo base_url()?>index.php/ThongKeController">
                             <i class="fa fa-chart-bar"></i>
                             <span>Thống kê</span>
                         </a>
                     </li>
                     <li class="header">QUẢN LÝ CỬA HÀNG</li>
                     <li class="treeview">
-                        <a href="TinTucController">
+                        <a href="<?php echo base_url()?>index.php/TinTucController">
                             <i class="glyphicon glyphicon-list"></i><span>Tin tức</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="SanPhamController">
+                        <a href="<?php echo base_url()?>index.php/SanPhamController">
                             <i class="fa fa-archive"></i><span>Sản phẩm</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="KhoController">
+                        <a href="<?php echo base_url()?>index.php/KhoController">
                             <i class="fa fa-store"></i><span>Kho</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="NhaCungCapController">
+                        <a href="<?php echo base_url()?>index.php/NhaCungCapController">
                             <i class="fa fa-handshake"></i><span>Nhà cung cấp</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="NhapHangController">
+                        <a href="<?php echo base_url()?>index.php/NhapHangController">
                             <i class="fa fa-shopping-cart"></i><span>Nhập hàng</span>
                         </a>
                     </li>
                     <li class="header">QUẢN LÝ BÁN HÀNG</li>
                     <li class="treeview">
-                        <a href="KhuyenMaiController">
+                        <a href="<?php echo base_url()?>index.php/KhuyenMaiController">
                             <i class="fa fa-newspaper"></i> <span>Khuyến mãi</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="HoTroController">
+                        <a href="<?php echo base_url()?>index.php/HoTroController">
                             <i class="fa fa-envelope"></i> <span>Hổ trợ</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="HoaDonController">
+                        <a href="<?php echo base_url()?>index.php/HoaDonController">
                             <i class="fa fa-calendar-check"></i> <span>Hóa đơn</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="GiaoHangController">
+                        <a href="<?php echo base_url()?>index.php/GiaoHangController">
                             <i class="fas fa-shipping-fast"></i> <span>Giao hàng</span>
                         </a>
                     </li>
                     <li class="treeview">
-                        <a href="KhachHangController">
+                        <a href="<?php echo base_url()?>index.php/KhachHangController">
                             <i class="fa fa-user"></i><span>Khách hàng</span>
                         </a>
                     </li>
@@ -163,12 +164,12 @@
                         </a>
                         <ul class="treeview-menu">
                             <li class="active">
-                                <a href="CauHinhController">
+                                <a href="<?php echo base_url()?>index.php/CauHinhController">
                                     <i class="fa fa-cogs"></i> Cấu hình
                                 </a>
                             </li>
                             <li>
-                                <a href="NhanVienController">
+                                <a href="<?php echo base_url()?>index.php/NhanVienController">
                                     <i class="fa fa-users"></i> Nhân viên
                                 </a>
                             </li>
@@ -190,7 +191,8 @@
                         <input type="text" placeholder="Search here">
                         <a><i class="fas fa-search-location"></i></a>
                     </div>
-                    <a class="btn btn-primary btn-sm" href="ThemMoiSPController" role="button">
+                    <a class="btn btn-primary btn-sm" href="<?php echo base_url()?>index.php/ThemMoiSPController"
+                        role="button">
                         <span class="glyphicon glyphicon-plus"></span>Thêm mới
                     </a>
                 </div>
@@ -211,36 +213,46 @@
                                                         <th>Hình ảnh</th>
                                                         <th>Loại sản phẩm</th>
                                                         <th>Thương hiệu</th>
+                                                        <th>Màu sắc</th>
                                                         <th>Mô tả</th>
+                                                        <th>Giá</th>
+                                                        <th>Giá KM</th>
                                                         <th class="text-center" colspan="2">Thao tác</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <?php foreach ($arrResult as $item) : ?>
                                                     <tr>
-                                                        <td class="text-center">1</td>
-                                                        <td style="font-size: 16px;">Iphone 13 Pro Max</td>
+                                                        <td class="text-center"><?php echo $item['masp'] ?></td>
+                                                        <td style="font-size: 16px;"><?php echo $item['tensp'] ?></td>
                                                         <td style="width:120px">
-                                                            <img src="img/iphone-13-promax.png"
-                                                                alt="Điện thoại Iphone 13 ProMax"
+                                                            <img src="<?php echo $item['hinhanh'] ?>"
+                                                                alt="hình ảnh cho <?php echo $item['tensp'] ?>"
                                                                 class="img-responsive">
                                                         </td>
-                                                        <td>Điện thoại</td>
-                                                        <td>Apple</td>
-                                                        <td>Không</td>
+                                                        <td><?php echo $item['TenLoaiSP'] ?></td>
+                                                        <td><?php echo $item['TenTH'] ?></td>
+                                                        <td><?php echo $item['mausac'] ?></td>
+                                                        <td><?php echo $item['mota'] ?></td>
+                                                        <td><?php echo $item['Gia'] ?></td>
+                                                        <td><?php echo $item['GiaKM'] ?></td>
                                                         <td class="text-center">
-                                                            <a class="btn btn-success btn-xs" href="SuaSPController"
+                                                            <a class="btn btn-success btn-xs"
+                                                                href="<?php echo base_url()?>index.php/SuaSPController/?masp=<?php echo $item['masp'] ?>&mattsp=<?php echo $item['mattsp'] ?>"
                                                                 role="button">
                                                                 <span class="glyphicon glyphicon-edit"></span>Sửa
                                                             </a>
                                                         </td>
                                                         <td class="text-center">
-                                                            <a class="btn btn-danger btn-xs" href="SanPhamController"
+                                                            <a class="btn btn-danger btn-xs"
+                                                                href="<?php echo base_url()?>index.php/SanPhamController/XoaSP/?masp=<?php echo $item['masp'] ?>&mattsp=<?php echo $item['mattsp'] ?>"
                                                                 onclick="return confirm('Xác nhận xóa sản phẩm này ?')"
                                                                 role="button">
                                                                 <span class="glyphicon glyphicon-trash"></span>Xóa
                                                             </a>
                                                         </td>
                                                     </tr>
+                                                    <?php endforeach ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -253,14 +265,17 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <ul class="pagination">
-                            <li class="hidden-xs"><a>Trang đầu</a></li>
-                            <li><a>Trước</a></li>
-                            <li class="active"><a>1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a>...</a></li>
-                            <li><a href="">5</a></li>
-                            <li><a href="">Sau</a></li>
-                            <li class="hidden-xs"><a href="">Trang cuối</a></li>
+                            <li class="hidden-xs"><a
+                                    href="<?php echo base_url() ?>index.php/SanPhamController/index/<?php echo 1 ?>">Trang
+                                    đầu</a></li>
+                            <?php for ($i=0 ; $i < $SoTrang ; $i++ ) : ?>
+                            <li class=""><a
+                                    href="<?php echo base_url() ?>index.php/SanPhamController/index/<?php echo $i+1 ?>"><?php echo $i+1 ?></a>
+                            </li>
+                            <?php endfor?>
+                            <li class="hidden-xs"><a
+                                    href="<?php echo base_url() ?>index.php/SanPhamController/index/<?php echo $SoTrang ?>">Trang
+                                    cuối</a></li>
                         </ul>
                     </div>
                 </div>
@@ -274,5 +289,11 @@
     <!-- AdminLTE App -->
     <script src="<?php echo base_url() ?>js/app.min.js"></script>
 </body>
+
+
+
+
+
+
 
 </html>

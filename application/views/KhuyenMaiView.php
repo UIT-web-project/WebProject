@@ -208,6 +208,7 @@
                                                     <tr>
                                                         <th class="text-center">Mã KM</th>
                                                         <th class="text-center">Số % KM</th>
+                                                        <th class="text-center">SP áp dụng</th>
                                                         <th class="text-center">Ngày bắt đầu</th>
                                                         <th class="text-center">Ngày kết thúc</th>
                                                         <th class="text-center">Tiền tối thiểu</th>
@@ -215,12 +216,15 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <?php foreach ($arrResult as $item) : ?>
                                                     <tr>
-                                                        <td class="text-center">1</td>
-                                                        <td class="text-center">10</td>
-                                                        <td class="text-center">20/10/2021</td>
-                                                        <td class="text-center">20/11/2021</td>
-                                                        <td class="text-center">10000000</td>
+                                                        <td class="text-center"><?php echo $item['MaKM'] ?></td>
+                                                        <td class="text-center"><?php echo $item['SoPTKM'] ?></td>
+                                                        <td class="text-center"><?php echo $item['tensp'] ?></td>
+                                                        <td class="text-center"><?php echo $item['TuNgay'] ?></td>
+                                                        <td class="text-center"><?php echo $item['DenNgay'] ?></td>
+                                                        <td class="text-center"><?php echo $item['TTienToiThieu'] ?>
+                                                        </td>
                                                         <td class="text-center">
                                                             <a class="btn btn-success btn-xs" href="SuaKMController"
                                                                 role="button">
@@ -235,6 +239,7 @@
                                                             </a>
                                                         </td>
                                                     </tr>
+                                                    <?php endforeach ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -261,5 +266,6 @@
     <!-- AdminLTE App -->
     <script src="<?php echo base_url() ?>js/app.min.js"></script>
 </body>
+
 
 </html>

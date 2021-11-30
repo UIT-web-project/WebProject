@@ -7,7 +7,12 @@
 	
 		public function index()
 		{
-			$this->load->view('KhuyenMaiView');
+			$this->load->model('KhuyenMaiModel');
+			$data = $this->KhuyenMaiModel->getData();
+			$data = array("arrResult" => $data);
+
+			// truyền data sang view
+			$this->load->view('KhuyenMaiView', $data);
 			
 		}
 	

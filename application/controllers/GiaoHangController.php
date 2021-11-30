@@ -7,8 +7,12 @@
 	
 		public function index()
 		{
-			$this->load->view('GiaoHangView');
-			
+			$this->load->model('GiaoHangModel');
+			$data = $this->GiaoHangModel->getData();
+			$data = array("arrResult" => $data);
+
+			// truyền data sang view
+			$this->load->view('GiaoHangView', $data);
 		}
 	
 	}

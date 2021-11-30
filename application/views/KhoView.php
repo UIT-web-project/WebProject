@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>CSS/AdminLTE.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>CSS/admin.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>CSS/a.css">
     <meta property="fb:app_id" content="659513967881060">
     <link rel="stylesheet" href="<?php echo base_url() ?>CSS/_all-skins.min.css">
     <script src="<?php echo base_url() ?>js/loader.js"></script>
@@ -203,7 +204,8 @@
                     </div>
                 </div>
             </section>
-            <section class="content">
+            <form class="content" action="<?=base_url()?>index.php/KhoController/ThemKho" method="post"
+                enctype="multipart/form">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="box" id="view">
@@ -219,46 +221,54 @@
                                                 </div>
                                                 <div class="col-md-5">
                                                     <label> Vị trí</label>
-                                                    <input type="text" name="vitrikho" id="vitrikhoText"
+                                                    <input type="text" name="vitri" id="vitrikhoText"
                                                         style="width: 80%;" placeholder="Vị trí">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <a class="btn btn-primary btn-sm" href="KhoController"
                                                         role="button">
-                                                        <span class="glyphicon glyphicon-plus"></span>Thêm mới
-                                                    </a>
-                                                    <a class="btn btn-success btn-xs" href="KhoController"
-                                                        role="button">
-                                                        <span class="glyphicon glyphicon-edit"></span>Cập nhật
+                                                        <span class="glyphicon glyphicon-plus"></span><input
+                                                            type="submit" value="Thêm mới">
                                                     </a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="table-responsive">
+                                        <div class="table-responsive" style="margin-top:30px;">
                                             <table class="table table-hover table-bordered" id="tbl_Kho">
                                                 <tr>
                                                     <th class="text-center">Mã Kho</th>
                                                     <th>Tên kho</th>
                                                     <th>Vị trí</th>
-                                                    <th class="text-center">Thao tác</th>
+                                                    <th class="text-center" colspan="2">Thao tác</th>
                                                 </tr>
-                                                <tr class="onRow">
-                                                    <td class="text-center">1</td>
-                                                    <td>HCM</td>
-                                                    <td>Tp Hồ Chí Minh</td>
+                                                <?php foreach ($arrResult as $item) : ?>
+                                                <tr class="onRow" id="XemKho">
+                                                    <td class="text-center"><?php echo $item['makho'] ?></td>
+                                                    <td id="tenkho1"><?php echo $item['tenkho'] ?></td>
+                                                    <td id="vitri1"><?php echo $item['vitri'] ?></td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-danger btn-xs" href="KhoController"
+                                                        <button type="button" class="btn btn-success editbtn"
+                                                            data-toggle="modal" data-target="#myModal"
+                                                            data-id='<?php echo $item['makho']?>' id="kho_popup">
+                                                            Sửa
+                                                        </button>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a class="btn btn-danger btn-xs"
+                                                            href="<?php echo base_url()?>index.php/KhoController/XoaKho/?makho=<?php echo $item['makho'] ?>"
                                                             onclick="return confirm('Xác nhận xóa kho này ?')"
                                                             role="button">
                                                             <span class="glyphicon glyphicon-trash"></span>Xóa
                                                         </a>
                                                     </td>
                                                 </tr>
+                                                <?php endforeach ?>
                                             </table>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 text-center">
                                                 <ul class="pagination">
+                                                    <li>1</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -268,7 +278,36 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </form>
+            <!-- Button to Open the Modal -->
+            <!-- The Modal -->
+            <form class="modal" id="myModal" action="<?=base_url()?>index.php/KhoController/SuaKho" method="post"
+                enctype="multipart/form">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Sửa thông tin kho</h4>
+                            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Mã Kho: <input type="text" name="makho_edit" readonly="true" id="makho_edit"
+                                style="width: 30px; margin-bottom: 20px;"></br>
+                            Tên kho: <input type="text" name="tenkho_edit" style="margin-right: 40px;" id="tenkho_edit">
+                            Vị trí: <input type="text" name="vitri_edit" id="vitrikho_edit">
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-danger" value="Xác nhận">
+                        </div>
+
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <!-- jQuery 2.2.3 -->
@@ -277,6 +316,21 @@
     <script src="<?php echo base_url() ?>js/bootstrap.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url() ?>js/app.min.js"></script>
+    <!-- Thêm xóa sửa Kho -->
+    <script>
+    $(document).ready(function() {
+        $('.editbtn').on('click', function() {
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function() {
+                return $(this).text();
+            }).get();
+            console.log(data);
+            $('#makho_edit').val(data[0]);
+            $('#tenkho_edit').val(data[1]);
+            $('#vitrikho_edit').val(data[2]);
+        });
+    })
+    </script>
 </body>
 
 </html>

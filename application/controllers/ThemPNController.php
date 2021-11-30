@@ -7,7 +7,7 @@
 	
 		public function index()
 		{
-			$this->load->view('ThemPN');
+			$this->load->view('ThemPNView');
 			
 		}
 	
