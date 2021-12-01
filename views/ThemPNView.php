@@ -193,14 +193,16 @@
             </section>
         </aside>
         <!----------------  Content Thêm phiếu nhập  ------------->
-        <div class="content-wrapper" style="min-height: 639px;">
+        <form class="content-wrapper" style="min-height: 639px;"
+            action="<?php echo base_url() ?>index.php/ThemPNController/ThemPN" method="post">
             <section class="content-header">
-                <h1><i class="glyphicon glyphicon-ok-sign"></i> Thêm phiếu nhập mới</h1>
+                <h1><i class="glyphicon glyphicon-ok-sign"></i> Thêm mới phiếu nhập</h1>
                 <div class="breadcrumb">
                     <a class="btn btn-primary btn-sm" href="NhapHangController" role="button">
-                        <span class="glyphicon glyphicon-floppy-save"></span>Lưu
+                        <span class="glyphicon glyphicon-floppy-save"></span><input type="submit" value="Lưu">
                     </a>
-                    <a class="btn btn-primary btn-sm" href="NhapHangController" role="button">
+                    <a class="btn btn-primary btn-sm" href="<?php echo base_url();?>index.php/NhapHangController"
+                        role="button">
                         <span class="glyphicon glyphicon-remove do_nos"></span> Thoát
                     </a>
                 </div>
@@ -215,18 +217,21 @@
                                     <div class="col-md-6" style="padding-left: 0px;">
                                         <div class="form-group">
                                             <label>Nhà cung cấp</label>
-                                            <select name="NCC_PN_IP" class="form-group" style="width:100%">
-                                                <option value>[--Chọn nhà cung cấp--]</option>
-                                                <option value="1">1-Apple</option>
+                                            <select name="mancc" class="form-group" style="width:100%">
+                                                <?php 
+													foreach ($arrResultNCC as $item) :
+														echo "<option value='". $item['MaNCC']."'>".$item['TenNCC']."</option>";
+													endforeach 
+												?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6" style="padding-right: 0px;">
                                         <div class="form-group">
                                             <label>Tình trạng thanh toán</label>
-                                            <select class="form-control" name="TTTT_PN_IP">
-                                                <option value="0">0.Chưa thanh toán</option>
-                                                <option value="1">1.Đã thanh toán</option>
+                                            <select class="form-control" name="tinhtrangtt">
+                                                <option value='0'>0. Chưa thanh toán</option>
+                                                <option value='1'>1. Đã thanh toán</option>
                                             </select>
                                         </div>
                                     </div>
@@ -234,17 +239,20 @@
                                 <div class="col-md-12">
                                     <div class="col-md-6" style="padding-left: 0px;">
                                         <div class="form-group">
-                                            <label>Thành tiền</label>
-                                            <input type="number" class="form-control" name="ThanhTien_PN_IP" min="0"
-                                                step="5000" style="width:100%" value="0">
+                                            <label>Ngày lập phiếu</label>
+                                            <input type="date" class="form-control" name="ngaylap" min="0"
+                                                style="width:100%" placeholder="Nhập số tiền">
                                         </div>
                                     </div>
-                                    <div class="col-md-6" style="padding-left: 0px;">
+                                    <div class="col-md-6" style="padding-right: 0px;">
                                         <div class="form-group">
                                             <label>Nhân viên</label>
-                                            <select name="NV_PN_IP" class="form-group" style="width:100%">
-                                                <option value>[----Chọn nhân viên----]</option>
-                                                <option value="1">1-Nguyễn Văn B</option>
+                                            <select name="manv" class="form-group" style="width:100%">
+                                                <?php 
+													foreach ($arrResultNV as $item) :
+														echo "<option value='". $item['MaNV']."'>".$item['TenNV']."</option>";
+													endforeach
+												?>
                                             </select>
                                         </div>
                                     </div>
@@ -260,27 +268,28 @@
                                 <div class="col-md-6" style="border-right:ridge">
                                     <div class="form-group">
                                         <label>Sản phẩm</label>
-                                        <select name="SP_CTPN_IP" class="form-group" style="width:100%" id="spSL">
-                                            <option value>[----Chọn sản phẩm----]</option>
-                                            <option value="1">1-Iphone 13 Pro Max</option>
-                                            <option value="2">2-Iphone 12 Pro Max</option>
+                                        <select name="masp" class="form-group" style="width:100%" id="sanpham">
+                                            <?php 
+												foreach ($arrResultSP as $item) :
+													echo "<option value='". $item['masp']."'>".$item['tensp']."</option>";
+												endforeach;
+											?>
+                                        </select>
+                                        <label>Mã Thông Tin Sản phẩm</label>
+                                        <select name="mattsp" class="form-group" style="width:100%" id="sanpham">
+                                            <?php 
+												$this->load->model('SanPhamModel');
+												foreach ($arrResultSP as $item) :
+													echo "<option value='". $item['mattsp']."'>".$item['mattsp']."</option>";
+												endforeach;
+											?>
                                         </select>
                                         <label>Giá nhập</label>
-                                        <input type="number" class="form-control" id="gnIP" name="GiaNhap_CTPN_IP"
-                                            min="0" step="5000" style="width:100%" value="0">
+                                        <input type="number" class="form-control" id="gianhap" name="gianhap" min="0"
+                                            style="width:100%" placeholder="Giá nhập">
                                         <label>Số lượng</label>
-                                        <input type="number" class="form-control" id="slIP" name="SL_CTPN_IP" min="0"
-                                            step="1" style="width:100%; margin-bottom: 10;" value="0">
-                                        <a class="btn btn-primary btn-sm" role="button">
-                                            <span class="glyphicon glyphicon-plus"></span>Thêm
-                                        </a>
-                                        <a class="btn btn-success btn-xs" role="button">
-                                            <span class="glyphicon glyphicon-edit"></span>Cập nhật
-                                        </a>
-                                        <a style="padding:5px" class="btn btn-danger btn-xs"
-                                            onclick="return confirm('Xác nhận xóa?')" role="button">
-                                            <span class="glyphicon glyphicon-trash"></span>Xóa
-                                        </a>
+                                        <input type="number" class="form-control" id="soluong" name="soluong" min="0"
+                                            step="1" style="width:100%; margin-bottom: 10;" placeholder="Số lượng">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -289,14 +298,30 @@
                                             <table class="table table-hover table-bordered" id="tbl_ctpn">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-center">Mã SP</th>
-                                                        <th>Tên sản phẩm</th>
-                                                        <th class="text-center">Giá nhập</th>
-                                                        <th class="text-center">Số lượng</th>
+                                                        <th class="text-center">Thành tiền (số lượng x giá nhập)</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
+                                                    <tr class="onRow">
+                                                        <td class="text-center">
+                                                            <input type="text" id="thanhtien" value="0"
+                                                                name="tongtientt" class="text-center">
+                                                            <script>
+                                                            $('#gianhap').keyup(function() {
+                                                                var gianhap = $('#gianhap').val();
+                                                                var soluong = $('#soluong').val();
+                                                                var thanhtien = gianhap * soluong;
+                                                                $('#thanhtien').val(thanhtien);
+                                                            });
+                                                            $('#soluong').keyup(function() {
+                                                                var gianhap = $('#gianhap').val();
+                                                                var soluong = $('#soluong').val();
+                                                                var thanhtien = gianhap * soluong;
+                                                                $('#thanhtien').val(thanhtien);
+                                                            });
+                                                            </script>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -307,8 +332,8 @@
                     </div>
                 </div>
             </section>
-            </form>
-        </div>
+        </form>
+    </div>
     </div>
     <!-- jQuery 2.2.3 -->
     <script src="<?php echo base_url() ?>js/jquery-2.2.3.min.js"></script>
@@ -317,5 +342,7 @@
     <!-- AdminLTE App -->
     <script src="<?php echo base_url() ?>js/app.min.js"></script>
 </body>
+
+
 
 </html>

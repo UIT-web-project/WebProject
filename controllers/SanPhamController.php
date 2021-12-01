@@ -24,10 +24,8 @@
 			// echo $masp;
 			$this->load->model('SanPhamModel');
 			
-
 			// print_r ($this->SanPhamModel->XoaTTSP('thongtinsp', $masp));
 
-			
 			if($this->SanPhamModel->XoaTTSP('thongtinsp', $masp) == true)
 			{	
 				if($this->SanPhamModel->XoaSP('sanpham', $masp) == true) {

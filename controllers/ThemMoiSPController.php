@@ -194,8 +194,13 @@
 			$camsau = $this->input->post('camsau');
 			$mausac = $this->input->post('mausac');
 			$cpu = $this->input->post('cpu');
-
-			// xử lý ảnh
+			if($tensp == '' || $maloaisp == '' || $math == '' || $mota == '' || $gia == '' || $giakm == '' || $kho == '' || $soluong == '' || $ram == '' || $bonhotrong == '' || $pin == '' || $kichthuocmh == '' || $camtruoc == '' || $camsau == '' || $mausac == '' || $cpu == '')
+			{
+				echo "Vui lòng nhập đầy đủ thông tin";
+			}
+			else
+			{
+				// xử lý ảnh
 			$target_dir = "fileupload/";
 			$target_file = $target_dir . basename($_FILES["hinhanh"]["name"]);
 			$uploadOk = 1;
@@ -273,6 +278,7 @@
 				echo "<pre>";
 				print_r ("Thêm sản phẩm thất bại");
 				echo "</pre>";	
+			}
 			}
 		}
 		// end: Thêm sản phẩm

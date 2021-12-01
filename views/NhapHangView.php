@@ -217,7 +217,9 @@
                                                     <tr>
                                                         <th class="text-center">Mã PN</th>
                                                         <th>Nhà cung cấp</th>
-                                                        <th>Thành tiền</th>
+                                                        <th>Sản phẩm</th>
+                                                        <th>Tổng tiền thanh toán</th>
+                                                        <th>Ngày lập</th>
                                                         <th class="text-center">Tình trạng thanh toán</th>
                                                         <th>Nhân viên</th>
                                                         <th class="text-center" colspan="2">Thao tác</th>
@@ -228,7 +230,9 @@
                                                     <tr>
                                                         <td class="text-center"><?php echo $item['MaPN'] ?></td>
                                                         <td><?php echo $item['TenNCC'] ?></td>
+                                                        <td><?php echo $item['tensp'] ?></td>
                                                         <td><?php echo $item['ThanhTien'] ?></td>
+                                                        <td><?php echo $item['NgayLapPN'] ?></td>
                                                         <td class="text-center">
                                                             <a href="HoaDonController">
                                                                 <?php 
@@ -241,7 +245,8 @@
                                                         </td>
                                                         <td><?php echo $item['TenNV'] ?></td>
                                                         <td class="text-center">
-                                                            <a class="btn btn-info btn-xs" href="CTPNController"
+                                                            <a class="btn btn-info btn-xs"
+                                                                href="<?php echo base_url()?>index.php/CTPNController/?mapn=<?php echo $item['MaPN'] ?>"
                                                                 role="button">
                                                                 <span class="glyphicon glyphicon-eye-open"></span>Xem
                                                             </a>
@@ -280,6 +285,7 @@
     <script src="<?php echo base_url() ?>js/bootstrap.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url() ?>js/app.min.js"></script>
+
 </body>
 
 </html>

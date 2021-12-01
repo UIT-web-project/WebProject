@@ -261,20 +261,14 @@
                                                         <div class="form-group">
                                                             <label>Giá</label>
                                                             <input name="gia" class="form-control" type="number"
-                                                                value="0" min="0" step="5000">
+                                                                value="0" min="0">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6" style="padding-right: 0px;">
                                                         <div class="form-group">
                                                             <Label>Giá khuyến mãi</Label>
-                                                            <select name="giakm" class="form-control">
-                                                                <?php foreach ($arrResultKM as $item) : ?>
-                                                                <option value="<?php echo $item['MaKM'] ?>">
-                                                                    <?php 
-																	echo $item['MaKM']; echo " - "; echo $item['SoPTKM']; echo " %"
-                                                                    ?></option>
-                                                                <?php endforeach?>
-                                                            </select>
+                                                            <input name="giakm" class="form-control" type="number"
+                                                                value="0" min="0">
                                                         </div>
                                                     </div>
                                                 </div>

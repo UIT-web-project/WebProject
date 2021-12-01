@@ -213,7 +213,10 @@
                                                         <th>Hình ảnh</th>
                                                         <th>Loại sản phẩm</th>
                                                         <th>Thương hiệu</th>
+                                                        <th>Màu sắc</th>
                                                         <th>Mô tả</th>
+                                                        <th>Giá</th>
+                                                        <th>Giá KM</th>
                                                         <th class="text-center" colspan="2">Thao tác</th>
                                                     </tr>
                                                 </thead>
@@ -229,17 +232,20 @@
                                                         </td>
                                                         <td><?php echo $item['TenLoaiSP'] ?></td>
                                                         <td><?php echo $item['TenTH'] ?></td>
+                                                        <td><?php echo $item['mausac'] ?></td>
                                                         <td><?php echo $item['mota'] ?></td>
+                                                        <td><?php echo $item['Gia'] ?></td>
+                                                        <td><?php echo $item['GiaKM'] ?></td>
                                                         <td class="text-center">
                                                             <a class="btn btn-success btn-xs"
-                                                                href="<?php echo base_url()?>index.php/SuaSPController"
+                                                                href="<?php echo base_url()?>index.php/SuaSPController/?masp=<?php echo $item['masp'] ?>&mattsp=<?php echo $item['mattsp'] ?>"
                                                                 role="button">
                                                                 <span class="glyphicon glyphicon-edit"></span>Sửa
                                                             </a>
                                                         </td>
                                                         <td class="text-center">
                                                             <a class="btn btn-danger btn-xs"
-                                                                href="<?php echo base_url()?>index.php/SanPhamController/XoaSP/?masp=<?php echo $item['masp'] ?>"
+                                                                href="<?php echo base_url()?>index.php/SanPhamController/XoaSP/?masp=<?php echo $item['masp'] ?>&mattsp=<?php echo $item['mattsp'] ?>"
                                                                 onclick="return confirm('Xác nhận xóa sản phẩm này ?')"
                                                                 role="button">
                                                                 <span class="glyphicon glyphicon-trash"></span>Xóa
