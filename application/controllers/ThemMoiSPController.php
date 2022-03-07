@@ -5,21 +5,39 @@
 	
 	class ThemMoiSPController extends CI_Controller {
 	
+		public function __construct()
+		{
+			parent::__construct();
+			if(!$this->session->userdata('logged_in') === TRUE){
+				redirect('TrangChuController', 'refresh');
+			}
+			else {
+				if($this->session->userdata('is_NV') === FALSE){
+					redirect('TrangChuController', 'refresh');
+				}
+			}
+		}
+		
 		public function index()
 		{
-			// tiện lấy data kho qua đây luôn
-			$this->load->model('KhoModel');
-			$dataKho = $this->KhoModel->getData();
-			$dataKho = array("arrResultKho" => $dataKho);
-			// tiện lấy khuyến mãi kho qua đây luôn
-			$this->load->model('KhuyenMaiModel');
-			$dataKM = $this->KhuyenMaiModel->getData();
-			$dataKM = array("arrResultKM" => $dataKM);
-			// megre 2 mảng để truyền qua view :D
-			$data = array_merge($dataKho, $dataKM);
-			// truyền data qua view
-			$this->load->view('ThemMoiSPView', $data);
+			if($this->session->userdata('level') === 'Quản lý' || $this->session->userdata('level') === 'Bán hàng' || $this->session->userdata('level') === 'Tiếp tân'){
+				// tiện lấy data kho qua đây luôn
+				$this->load->model('KhoModel');
+				$dataKho = $this->KhoModel->getData();
+				$dataKho = array("arrResultKho" => $dataKho);
+				// tiện lấy khuyến mãi kho qua đây luôn
+				$this->load->model('KhuyenMaiModel');
+				$dataKM = $this->KhuyenMaiModel->getData();
+				$dataKM = array("arrResultKM" => $dataKM);
+				// megre 2 mảng để truyền qua view :D
+				$data = array_merge($dataKho, $dataKM);
+				// truyền data qua view
+				$this->load->view('ThemMoiSPView', $data);
 			
+			}
+			else {
+				$this->load->view('view_error/tuchoitruycap');
+			}
 		}
 
 		// begin: Thêm xóa sửa loại sản phẩm
@@ -200,7 +218,7 @@
 			}
 			else
 			{
-				// xử lý ảnh
+			// xử lý ảnh
 			$target_dir = "fileupload/";
 			$target_file = $target_dir . basename($_FILES["hinhanh"]["name"]);
 			$uploadOk = 1;

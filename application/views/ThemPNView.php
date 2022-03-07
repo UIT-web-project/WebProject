@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="<?php echo base_url() ?>CSS/AdminLTE.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>CSS/admin.css">
@@ -16,19 +19,6 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>CSS/_all-skins.min.css">
     <script src="<?php echo base_url() ?>js/loader.js"></script>
     <script src="<?php echo base_url() ?>ckeditor/ckeditor.js"></script>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script type="text/javascript">
-    $(function() {
-        $('#tbl_ctpn tr').click(function(e) {
-            var masp = $(this).closest('.onRow').find('td:nth-child(1)').text();
-            var gianhap = $(this).closest('.onRow').find('td:nth-child(3)').text();
-            var sl = $(this).closest('.onRow').find('td:nth-child(4)').text();
-            $('#spSL').val(masp);
-            $('#gnIP').val(gianhap);
-            $('#slIP').val(sl);
-        });
-    });
-    </script>
 </head>
 
 <body class="skin-blue sidebar-mini">
@@ -36,19 +26,22 @@
     <div class="wrapper">
         <header class="main-header">
             <a href="adminController" class="logo">
-                <span class="logo-lg">Quản trị hệ thống</span>
+                <span class="logo-lg">Quản trị hệ thống</span><img
+                    style="width: 50px; height: 50px;transform: translate(-14px,0px);"
+                    src="<?php echo base_url()?>img/logodtlt.jpg" alt="">
             </a>
             <nav class="navbar navbar-static-top" style="height: 50px">
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
-                    <i class="ic fa fa-bars"></i>
+
                 </a>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav" style="height: 52px; padding: 1px">
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-bell-o"></i>
-                                <span class="label label-warning">17</span>
+                                <i class="fas fa-bells"></i>
+                                <span
+                                    class="label label-warning"><?php echo $this->session->userdata('countHoaDon0')+$this->session->userdata('countDonHang0')?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -56,7 +49,8 @@
                                         <li>
                                             <a href="adminController">
                                                 <i class="fa fa-users text-aqua"></i>
-                                                11 Đơn hàng chưa duyệt
+                                                <?php echo $this->session->userdata('countHoaDon0')?> Đơn hàng chưa
+                                                duyệt
                                             </a>
                                         </li>
                                     </ul>
@@ -66,7 +60,8 @@
                                         <li>
                                             <a href="GiaoHangController">
                                                 <i class="fa fa-users text-aqua"></i>
-                                                6 Đơn hàng đang giao
+                                                <?php echo $this->session->userdata('countDonHang0')?> Đơn hàng đang
+                                                giao
                                             </a>
                                         </li>
                                     </ul>
@@ -74,27 +69,33 @@
                             </ul>
                         </li>
                         <li style="height: 52px">
-                            <a target="_blank" href="index.html">
-                                <i class="fa fa-house-user"></i>
-                                <span>Website</span>
+                            <a target="_blank" href="<?php echo base_url() ?>index.php/TrangChuController">
+                                <i class="fas fa-home"></i>
+                                <span>Trang chủ</span>
                             </a>
                         </li>
                         <li class="dropdown user user-menu" style="height: 52px; padding: 0px">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="img/user-group.png" class="user-image" alt="User Image">
-                                <span class="hidden-xs">ADMIN</span>
+                                <img src="<?php echo base_url() ?>img/user-group.png" class="user-image"
+                                    alt="User Image">
+                                <span class="hidden-xs"><?php echo $this->session->userdata('username')?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header">
-                                    <img src="img/user-group.png" class="img-circle" alt="User Image">
-                                    <p>ADMIN<small>0167892615</small></p>
+                                    <img src="<?php echo base_url() ?>img/user-group.png" class="img-circle"
+                                        alt="User Image">
+                                    <p><?php echo $this->session->userdata('username')?><small><?php echo $this->session->userdata('level')?></small>
+                                    </p>
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="SuaNVController" class="btn btn-default btn-flat">Chi tiết</a>
+                                        <a href="<?php echo site_url('TTTKController');?>"
+                                            class="btn btn-default btn-flat">Thông tin chi
+                                            tiết</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="admin/user/logout.html" class="btn btn-default btn-flat">Thoát</a>
+                                        <a href="<?php echo site_url('DangNhapController/DangXuat');?>"
+                                            class="btn btn-default btn-flat">Đăng xuất</a>
                                     </div>
                                 </li>
                             </ul>
@@ -104,103 +105,93 @@
             </nav>
         </header>
 
-        <aside class="main-sidebar">
-            <section class="sidebar">
-                <ul class="sidebar-menu">
-                    <li class="treeview">
-                        <a href="ThongKeController">
-                            <i class="fa fa-chart-bar"></i>
+        <?php if($this->session->userdata('level')=== 'Quản lý') : ?>
+        <aside class='main-sidebar'>
+            <section class='sidebar'>
+                <ul class='sidebar-menu'>
+                    <li class='treeview'>
+                        <a href='ThongKeController'>
+                            <i class='fa fa-chart-bar'></i>
                             <span>Thống kê</span>
                         </a>
                     </li>
-                    <li class="header">QUẢN LÝ CỬA HÀNG</li>
-                    <li class="treeview">
-                        <a href="TinTucController">
-                            <i class="glyphicon glyphicon-list"></i><span>Tin tức</span>
+                    <li class='header'>QUẢN LÝ CỬA HÀNG</li>
+                    <li class='treeview'>
+                        <a href='TinTucController'>
+                            <i class='glyphicon glyphicon-list'></i><span>Tin tức</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="SanPhamController">
-                            <i class="fa fa-archive"></i><span>Sản phẩm</span>
+                    <li class='treeview'>
+                        <a href='SanPhamController'>
+                            <i class='fa fa-archive'></i><span>Sản phẩm</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="KhoController">
-                            <i class="fa fa-store"></i><span>Kho</span>
+                    <li class='treeview'>
+                        <a href='KhoController'>
+                            <i class='fa fa-store'></i><span>Kho</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="NhaCungCapController">
-                            <i class="fa fa-handshake"></i><span>Nhà cung cấp</span>
+                    <li class='treeview'>
+                        <a href='NhaCungCapController'>
+                            <i class='fa fa-handshake'></i><span>Nhà cung cấp</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="NhapHangController">
-                            <i class="fa fa-shopping-cart"></i><span>Nhập hàng</span>
+                    <li class='treeview'>
+                        <a href='NhapHangController'>
+                            <i class='fa fa-shopping-cart'></i><span>Nhập hàng</span>
                         </a>
                     </li>
-                    <li class="header">QUẢN LÝ BÁN HÀNG</li>
-                    <li class="treeview">
-                        <a href="KhuyenMaiController">
-                            <i class="fa fa-newspaper"></i> <span>Khuyến mãi</span>
+                    <li class='header'>QUẢN LÝ BÁN HÀNG</li>
+                    <li class='treeview'>
+                        <a href='KhuyenMaiController'>
+                            <i class='fa fa-newspaper'></i> <span>Khuyến mãi</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="HoTroController">
-                            <i class="fa fa-envelope"></i> <span>Hổ trợ</span>
+                    <li class='treeview'>
+                        <a href='HoTroController'>
+                            <i class='fa fa-envelope'></i> <span>Hổ trợ</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="HoaDonController">
-                            <i class="fa fa-calendar-check"></i> <span>Hóa đơn</span>
+                    <li class='treeview'>
+                        <a href='HoaDonController'>
+                            <i class='fa fa-calendar-check'></i> <span>Hóa đơn</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="GiaoHangController">
-                            <i class="fas fa-shipping-fast"></i> <span>Giao hàng</span>
+                    <li class='treeview'>
+                        <a href='GiaoHangController'>
+                            <i class='fas fa-shipping-fast'></i> <span>Giao hàng</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="KhachHangController">
-                            <i class="fa fa-user"></i><span>Khách hàng</span>
+                    <li class='treeview'>
+                        <a href='KhachHangController'>
+                            <i class='fa fa-user'></i><span>Khách hàng</span>
                         </a>
                     </li>
                     </li>
-                    <li class="header">CÀI ĐẶT</li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="glyphicon glyphicon-cog"></i><span>Hệ thống</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-sort pull-right"></i>
-                            </span>
+                    <li class='header'>CÀI ĐẶT</li>
+                    <li class='treeview'>
+                        <a href='NhanVienController'>
+                            <i class='fa fa-users'></i><span>Nhân viên</span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li class="active">
-                                <a href="CauHinhController">
-                                    <i class="fa fa-cogs"></i> Cấu hình
-                                </a>
-                            </li>
-                            <li>
-                                <a href="NhanVienController">
-                                    <i class="fa fa-users"></i> Nhân viên
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-                    <li><a href="admin/user/logout.html"><i class="fa fa-sign-out-alt text-red"></i>
-                            <span>Thoát</span></a></li>
+                    <li><a href='<?php echo site_url('DangNhapController/DangXuat');?>'><i
+                                class='fa fa-sign-out-alt text-red'></i>
+                            <span>Đăng xuất</span></a></li>
                 </ul>
             </section>
         </aside>
+        <?php endif ?>
         <!----------------  Content Thêm phiếu nhập  ------------->
-        <div class="content-wrapper" style="min-height: 639px;">
+        <form class="content-wrapper" style="min-height: 639px;"
+            action="<?php echo base_url() ?>index.php/ThemPNController/ThemPN" method="post">
             <section class="content-header">
-                <h1><i class="glyphicon glyphicon-ok-sign"></i> Thêm phiếu nhập mới</h1>
+                <h1><i class="glyphicon glyphicon-ok-sign"></i> Thêm mới phiếu nhập</h1>
                 <div class="breadcrumb">
                     <a class="btn btn-primary btn-sm" href="NhapHangController" role="button">
-                        <span class="glyphicon glyphicon-floppy-save"></span>Lưu
+                        <span class="glyphicon glyphicon-floppy-save"></span><input type="submit" value="Lưu">
                     </a>
-                    <a class="btn btn-primary btn-sm" href="NhapHangController" role="button">
+                    <a class="btn btn-primary btn-sm" href="<?php echo base_url();?>index.php/NhapHangController"
+                        role="button">
                         <span class="glyphicon glyphicon-remove do_nos"></span> Thoát
                     </a>
                 </div>
@@ -215,18 +206,21 @@
                                     <div class="col-md-6" style="padding-left: 0px;">
                                         <div class="form-group">
                                             <label>Nhà cung cấp</label>
-                                            <select name="NCC_PN_IP" class="form-group" style="width:100%">
-                                                <option value>[--Chọn nhà cung cấp--]</option>
-                                                <option value="1">1-Apple</option>
+                                            <select name="mancc" class="form-group" style="width:100%">
+                                                <?php 
+													foreach ($arrResultNCC as $item) :
+														echo "<option value='". $item['MaNCC']."'>".$item['TenNCC']."</option>";
+													endforeach 
+												?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6" style="padding-right: 0px;">
                                         <div class="form-group">
                                             <label>Tình trạng thanh toán</label>
-                                            <select class="form-control" name="TTTT_PN_IP">
-                                                <option value="0">0.Chưa thanh toán</option>
-                                                <option value="1">1.Đã thanh toán</option>
+                                            <select class="form-control" name="tinhtrangtt">
+                                                <option value='0'>0. Chưa thanh toán</option>
+                                                <option value='1'>1. Đã thanh toán</option>
                                             </select>
                                         </div>
                                     </div>
@@ -234,17 +228,20 @@
                                 <div class="col-md-12">
                                     <div class="col-md-6" style="padding-left: 0px;">
                                         <div class="form-group">
-                                            <label>Thành tiền</label>
-                                            <input type="number" class="form-control" name="ThanhTien_PN_IP" min="0"
-                                                step="5000" style="width:100%" value="0">
+                                            <label>Ngày lập phiếu</label>
+                                            <input type="date" class="form-control" name="ngaylap" min="0"
+                                                style="width:100%" placeholder="Nhập số tiền">
                                         </div>
                                     </div>
-                                    <div class="col-md-6" style="padding-left: 0px;">
+                                    <div class="col-md-6" style="padding-right: 0px;">
                                         <div class="form-group">
                                             <label>Nhân viên</label>
-                                            <select name="NV_PN_IP" class="form-group" style="width:100%">
-                                                <option value>[----Chọn nhân viên----]</option>
-                                                <option value="1">1-Nguyễn Văn B</option>
+                                            <select name="manv" class="form-group" style="width:100%">
+                                                <?php 
+													foreach ($arrResultNV as $item) :
+														echo "<option value='". $item['MaNV']."'>".$item['TenNV']."</option>";
+													endforeach
+												?>
                                             </select>
                                         </div>
                                     </div>
@@ -260,27 +257,28 @@
                                 <div class="col-md-6" style="border-right:ridge">
                                     <div class="form-group">
                                         <label>Sản phẩm</label>
-                                        <select name="SP_CTPN_IP" class="form-group" style="width:100%" id="spSL">
-                                            <option value>[----Chọn sản phẩm----]</option>
-                                            <option value="1">1-Iphone 13 Pro Max</option>
-                                            <option value="2">2-Iphone 12 Pro Max</option>
+                                        <select name="masp" class="form-group" style="width:100%" id="sanpham">
+                                            <?php 
+												foreach ($arrResultSP as $item) :
+													echo "<option value='". $item['masp']."'>".$item['tensp']."</option>";
+												endforeach;
+											?>
                                         </select>
+                                        <!-- <label>Mã Thông Tin Sản phẩm</label>
+                                        <select name="mattsp" class="form-group" style="width:100%" id="sanpham">
+                                            <?php 
+												$this->load->model('SanPhamModel');
+												foreach ($arrResultSP as $item) :
+													echo "<option value='". $item['mattsp']."'>".$item['mattsp']."</option>";
+												endforeach;
+											?>
+                                        </select> -->
                                         <label>Giá nhập</label>
-                                        <input type="number" class="form-control" id="gnIP" name="GiaNhap_CTPN_IP"
-                                            min="0" step="5000" style="width:100%" value="0">
+                                        <input type="number" class="form-control" id="gianhap" name="gianhap" min="0"
+                                            style="width:100%" placeholder="Giá nhập">
                                         <label>Số lượng</label>
-                                        <input type="number" class="form-control" id="slIP" name="SL_CTPN_IP" min="0"
-                                            step="1" style="width:100%; margin-bottom: 10;" value="0">
-                                        <a class="btn btn-primary btn-sm" role="button">
-                                            <span class="glyphicon glyphicon-plus"></span>Thêm
-                                        </a>
-                                        <a class="btn btn-success btn-xs" role="button">
-                                            <span class="glyphicon glyphicon-edit"></span>Cập nhật
-                                        </a>
-                                        <a style="padding:5px" class="btn btn-danger btn-xs"
-                                            onclick="return confirm('Xác nhận xóa?')" role="button">
-                                            <span class="glyphicon glyphicon-trash"></span>Xóa
-                                        </a>
+                                        <input type="number" class="form-control" id="soluong" name="soluong" min="0"
+                                            step="1" style="width:100%; margin-bottom: 10;" placeholder="Số lượng">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -289,14 +287,30 @@
                                             <table class="table table-hover table-bordered" id="tbl_ctpn">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-center">Mã SP</th>
-                                                        <th>Tên sản phẩm</th>
-                                                        <th class="text-center">Giá nhập</th>
-                                                        <th class="text-center">Số lượng</th>
+                                                        <th class="text-center">Thành tiền (số lượng x giá nhập)</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
+                                                    <tr class="onRow">
+                                                        <td class="text-center">
+                                                            <input type="text" id="thanhtien" value="0"
+                                                                name="tongtientt" class="text-center">
+                                                            <script>
+                                                            $('#gianhap').keyup(function() {
+                                                                var gianhap = $('#gianhap').val();
+                                                                var soluong = $('#soluong').val();
+                                                                var thanhtien = gianhap * soluong;
+                                                                $('#thanhtien').val(thanhtien);
+                                                            });
+                                                            $('#soluong').keyup(function() {
+                                                                var gianhap = $('#gianhap').val();
+                                                                var soluong = $('#soluong').val();
+                                                                var thanhtien = gianhap * soluong;
+                                                                $('#thanhtien').val(thanhtien);
+                                                            });
+                                                            </script>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -307,8 +321,8 @@
                     </div>
                 </div>
             </section>
-            </form>
-        </div>
+        </form>
+    </div>
     </div>
     <!-- jQuery 2.2.3 -->
     <script src="<?php echo base_url() ?>js/jquery-2.2.3.min.js"></script>
@@ -317,5 +331,7 @@
     <!-- AdminLTE App -->
     <script src="<?php echo base_url() ?>js/app.min.js"></script>
 </body>
+
+
 
 </html>

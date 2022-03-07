@@ -5,14 +5,32 @@
 	
 	class KhoController extends CI_Controller {
 	
+		public function __construct()
+		{
+			parent::__construct();
+			if(!$this->session->userdata('logged_in') === TRUE){
+				redirect('TrangChuController', 'refresh');
+			}
+			else {
+				if($this->session->userdata('is_NV') === FALSE){
+					redirect('TrangChuController', 'refresh');
+				}
+			}
+		}
 		public function index()
 		{
-			$this->load->model('KhoModel');
-			$data = $this->KhoModel->getData();
-			$data = array("arrResult" => $data);
+			
+			if($this->session->userdata('level') === 'Quản lý' || $this->session->userdata('level') === 'Giao hàng' || $this->session->userdata('level') === 'Tiếp tân'){
+				$this->load->model('KhoModel');
+				$data = $this->KhoModel->getData();
+				$data = array("arrResult" => $data);
 
-			// truyền data sang view
-			$this->load->view('KhoView', $data);
+				// truyền data sang view
+				$this->load->view('KhoView', $data);
+			}
+			else {
+				$this->load->view('view_error/tuchoitruycap');
+			}
 		}
 		public function ThemKho()
 		{

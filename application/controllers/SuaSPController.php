@@ -5,43 +5,57 @@
 	
 	class SuaSPController extends CI_Controller {
 	
+		public function __construct()
+		{
+			parent::__construct();
+			if(!$this->session->userdata('logged_in') === TRUE){
+				redirect('TrangChuController', 'refresh');
+			}
+			else {
+				if($this->session->userdata('is_NV') === FALSE){
+					redirect('TrangChuController', 'refresh');
+				}
+			}
+		}
+		
 		public function index()
 		{
-			// tiện lấy data kho qua đây luôn
-			$this->load->model('KhoModel');
-			$dataKho = $this->KhoModel->getData();
-			$dataKho = array("arrResultKho" => $dataKho);
-			// tiện lấy khuyến mãi kho qua đây luôn
-			$this->load->model('KhuyenMaiModel');
-			$dataKM = $this->KhuyenMaiModel->getData();
-			$dataKM = array("arrResultKM" => $dataKM);
-			// tiện lấy loại sản phẩm loại sp qua đây luôn
-			$this->load->model('ThemMoiSPModel');
-			$dataLoaiSP = $this->ThemMoiSPModel->XemLoaiSP();
-			$dataLoaiSP = $dataLoaiSP->result_array();
-			$dataLoaiSP = array("arrResultLoaiSP" => $dataLoaiSP);
-			// tiện lấy thương hiệu qua đây luôn
-			$this->load->model('ThemMoiSPModel');
-			$dataThuongHieu = $this->ThemMoiSPModel->XemTH();
-			$dataThuongHieu = $dataThuongHieu->result_array();
-			$dataThuongHieu = array("arrResultThuongHieu" => $dataThuongHieu);
-			// mã sản phẩm lấy từ url
-			$masp = $this->input->get('masp');
-			// mã thông tin sản phẩm lấy từ url
-			// $mattsp = $this->input->get('mattsp');
-			// $mattsp = array("mattsp" => $mattsp);
-			// echo $masp."-"; var_dump($mattsp);
-			// $masp = array("masp" => $masp);
-			// tiện lấy thông tin sản phẩm qua đây luôn
-			$this->load->model('SanPhamModel');
-			$dataSP = $this->SanPhamModel->getDataSP($masp);
-			$dataSP = array("arrResultSP" => $dataSP);
-			// var_dump($dataSP);
-			// var_dump($dataSP['arrResultSP'][0]);
-			// megre mảng để truyền qua view :D
-			$data = array_merge($dataKho, $dataKM, $dataLoaiSP, $dataThuongHieu, $dataSP);
-			// truyền data qua view
-			$this->load->view('SuaSPView', $data);
+			if($this->session->userdata('level') === 'Quản lý' || $this->session->userdata('level') === 'Bán hàng' || $this->session->userdata('level') === 'Tiếp tân'){
+				// tiện lấy data kho qua đây luôn
+				$this->load->model('KhoModel');
+				$dataKho = $this->KhoModel->getData();
+				$dataKho = array("arrResultKho" => $dataKho);
+				// tiện lấy khuyến mãi kho qua đây luôn
+				$this->load->model('KhuyenMaiModel');
+				$dataKM = $this->KhuyenMaiModel->getData();
+				$dataKM = array("arrResultKM" => $dataKM);
+				// tiện lấy loại sản phẩm loại sp qua đây luôn
+				$this->load->model('ThemMoiSPModel');
+				$dataLoaiSP = $this->ThemMoiSPModel->XemLoaiSP();
+				$dataLoaiSP = $dataLoaiSP->result_array();
+				$dataLoaiSP = array("arrResultLoaiSP" => $dataLoaiSP);
+				// tiện lấy thương hiệu qua đây luôn
+				$this->load->model('ThemMoiSPModel');
+				$dataThuongHieu = $this->ThemMoiSPModel->XemTH();
+				$dataThuongHieu = $dataThuongHieu->result_array();
+				$dataThuongHieu = array("arrResultThuongHieu" => $dataThuongHieu);
+				// mã sản phẩm lấy từ url
+				$masp = $this->input->get('masp');
+				$mattsp = $this->input->get('mattsp');
+				// tiện lấy thông tin sản phẩm qua đây luôn
+				$this->load->model('SanPhamModel');
+				$dataSP = $this->SanPhamModel->getDataSP_TTSP($masp, $mattsp);
+				$dataSP = array("arrResultSP" => $dataSP);
+				// var_dump($dataSP);
+				// var_dump($dataSP['arrResultSP'][0]);
+				// megre mảng để truyền qua view :D
+				$data = array_merge($dataKho, $dataKM, $dataLoaiSP, $dataThuongHieu, $dataSP);
+				// truyền data qua view
+				$this->load->view('SuaSPView', $data);
+			}
+			else {
+				$this->load->view('view_error/tuchoitruycap');
+			}
 		}
 	
 		// thêm sản phẩm

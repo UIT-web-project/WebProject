@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
     <link rel="stylesheet" href="<?php echo base_url() ?>CSS/AdminLTE.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>CSS/admin.css">
@@ -23,19 +26,22 @@
     <div class="wrapper">
         <header class="main-header">
             <a href="adminController" class="logo">
-                <span class="logo-lg">Quản trị hệ thống</span>
+                <span class="logo-lg">Quản trị hệ thống</span><img
+                    style="width: 50px; height: 50px;transform: translate(-14px,0px);"
+                    src="<?php echo base_url()?>img/logodtlt.jpg" alt="">
             </a>
             <nav class="navbar navbar-static-top" style="height: 50px">
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
-                    <i class="ic fa fa-bars"></i>
+
                 </a>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav" style="height: 52px; padding: 1px">
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-bell-o"></i>
-                                <span class="label label-warning">17</span>
+                                <i class="fas fa-bells"></i>
+                                <span
+                                    class="label label-warning"><?php echo $this->session->userdata('countHoaDon0')+$this->session->userdata('countDonHang0')?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -43,7 +49,8 @@
                                         <li>
                                             <a href="adminController">
                                                 <i class="fa fa-users text-aqua"></i>
-                                                11 Đơn hàng chưa duyệt
+                                                <?php echo $this->session->userdata('countHoaDon0')?> Đơn hàng chưa
+                                                duyệt
                                             </a>
                                         </li>
                                     </ul>
@@ -53,7 +60,8 @@
                                         <li>
                                             <a href="GiaoHangController">
                                                 <i class="fa fa-users text-aqua"></i>
-                                                6 Đơn hàng đang giao
+                                                <?php echo $this->session->userdata('countDonHang0')?> Đơn hàng đang
+                                                giao
                                             </a>
                                         </li>
                                     </ul>
@@ -61,28 +69,33 @@
                             </ul>
                         </li>
                         <li style="height: 52px">
-                            <a target="_blank" href="index.html">
-                                <i class="fa fa-house-user"></i>
-                                <span>Website</span>
+                            <a target="_blank" href="<?php echo base_url() ?>index.php/TrangChuController">
+                                <i class="fas fa-home"></i>
+                                <span>Trang chủ</span>
                             </a>
                         </li>
                         <li class="dropdown user user-menu" style="height: 52px; padding: 0px">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="<?php echo base_url() ?>img/user-group.png" class="user-image"
                                     alt="User Image">
-                                <span class="hidden-xs">ADMIN</span>
+                                <span class="hidden-xs"><?php echo $this->session->userdata('username')?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header">
-                                    <img src="img/user-group.png" class="img-circle" alt="User Image">
-                                    <p>ADMIN<small>0167892615</small></p>
+                                    <img src="<?php echo base_url() ?>img/user-group.png" class="img-circle"
+                                        alt="User Image">
+                                    <p><?php echo $this->session->userdata('username')?><small><?php echo $this->session->userdata('level')?></small>
+                                    </p>
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="SuaNVController" class="btn btn-default btn-flat">Chi tiết</a>
+                                        <a href="<?php echo site_url('TTTKController');?>"
+                                            class="btn btn-default btn-flat">Thông tin chi
+                                            tiết</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="admin/user/logout.html" class="btn btn-default btn-flat">Thoát</a>
+                                        <a href="<?php echo site_url('DangNhapController/DangXuat');?>"
+                                            class="btn btn-default btn-flat">Đăng xuất</a>
                                     </div>
                                 </li>
                             </ul>
@@ -91,95 +104,132 @@
                 </div>
             </nav>
         </header>
-
-        <aside class="main-sidebar">
-            <section class="sidebar">
-                <ul class="sidebar-menu">
-                    <li class="treeview">
-                        <a href="ThongKeController">
-                            <i class="fa fa-chart-bar"></i>
+        <?php if($this->session->userdata('level')=== 'Quản lý') : ?>
+        <aside class='main-sidebar'>
+            <section class='sidebar'>
+                <ul class='sidebar-menu'>
+                    <li class='treeview'>
+                        <a href='ThongKeController'>
+                            <i class='fa fa-chart-bar'></i>
                             <span>Thống kê</span>
                         </a>
                     </li>
-                    <li class="header">QUẢN LÝ CỬA HÀNG</li>
-                    <li class="treeview">
-                        <a href="TinTucController">
-                            <i class="glyphicon glyphicon-list"></i><span>Tin tức</span>
+                    <li class='header'>QUẢN LÝ CỬA HÀNG</li>
+                    <li class='treeview'>
+                        <a href='TinTucController'>
+                            <i class='glyphicon glyphicon-list'></i><span>Tin tức</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="SanPhamController">
-                            <i class="fa fa-archive"></i><span>Sản phẩm</span>
+                    <li class='treeview'>
+                        <a href='SanPhamController'>
+                            <i class='fa fa-archive'></i><span>Sản phẩm</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="KhoController">
-                            <i class="fa fa-store"></i><span>Kho</span>
+                    <li class='treeview'>
+                        <a href='KhoController'>
+                            <i class='fa fa-store'></i><span>Kho</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="NhaCungCapController">
-                            <i class="fa fa-handshake"></i><span>Nhà cung cấp</span>
+                    <li class='treeview'>
+                        <a href='NhaCungCapController'>
+                            <i class='fa fa-handshake'></i><span>Nhà cung cấp</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="NhapHangController">
-                            <i class="fa fa-shopping-cart"></i><span>Nhập hàng</span>
+                    <li class='treeview'>
+                        <a href='NhapHangController'>
+                            <i class='fa fa-shopping-cart'></i><span>Nhập hàng</span>
                         </a>
                     </li>
-                    <li class="header">QUẢN LÝ BÁN HÀNG</li>
-                    <li class="treeview">
-                        <a href="KhuyenMaiController">
-                            <i class="fa fa-newspaper"></i> <span>Khuyến mãi</span>
+                    <li class='header'>QUẢN LÝ BÁN HÀNG</li>
+                    <li class='treeview'>
+                        <a href='KhuyenMaiController'>
+                            <i class='fa fa-newspaper'></i> <span>Khuyến mãi</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="HoTroController">
-                            <i class="fa fa-envelope"></i> <span>Hổ trợ</span>
+                    <li class='treeview'>
+                        <a href='HoTroController'>
+                            <i class='fa fa-envelope'></i> <span>Hổ trợ</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="HoaDonController">
-                            <i class="fa fa-calendar-check"></i> <span>Hóa đơn</span>
+                    <li class='treeview'>
+                        <a href='HoaDonController'>
+                            <i class='fa fa-calendar-check'></i> <span>Hóa đơn</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="GiaoHangController">
-                            <i class="fas fa-shipping-fast"></i> <span>Giao hàng</span>
+                    <li class='treeview'>
+                        <a href='GiaoHangController'>
+                            <i class='fas fa-shipping-fast'></i> <span>Giao hàng</span>
                         </a>
                     </li>
-                    <li class="treeview">
-                        <a href="KhachHangController">
-                            <i class="fa fa-user"></i><span>Khách hàng</span>
+                    <li class='treeview'>
+                        <a href='KhachHangController'>
+                            <i class='fa fa-user'></i><span>Khách hàng</span>
                         </a>
                     </li>
                     </li>
-                    <li class="header">CÀI ĐẶT</li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="glyphicon glyphicon-cog"></i><span>Hệ thống</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-sort pull-right"></i>
-                            </span>
+                    <li class='header'>CÀI ĐẶT</li>
+                    <li class='treeview'>
+                        <a href='NhanVienController'>
+                            <i class='fa fa-users'></i><span>Nhân viên</span>
                         </a>
-                        <ul class="treeview-menu">
-                            <li class="active">
-                                <a href="CauHinhController">
-                                    <i class="fa fa-cogs"></i> Cấu hình
-                                </a>
-                            </li>
-                            <li>
-                                <a href="NhanVienController">
-                                    <i class="fa fa-users"></i> Nhân viên
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-                    <li><a href="admin/user/logout.html"><i class="fa fa-sign-out-alt text-red"></i>
-                            <span>Thoát</span></a></li>
+                    <li><a href='<?php echo site_url('DangNhapController/DangXuat');?>'><i
+                                class='fa fa-sign-out-alt text-red'></i>
+                            <span>Đăng xuất</span></a></li>
                 </ul>
             </section>
         </aside>
+        <?php elseif($this->session->userdata('level')=== 'Bán hàng') : ?>
+        <aside class='main-sidebar'>
+            <section class='sidebar'>
+                <ul class='sidebar-menu'>
+                    <li class='treeview'>
+                        <a href='ThongKeController'>
+                            <i class='fa fa-chart-bar'></i>
+                            <span>Thống kê</span>
+                        </a>
+                    </li>
+                    <li class='header'>QUẢN LÝ CỬA HÀNG</li>
+                    <li class='treeview'>
+                        <a href='TinTucController'>
+                            <i class='glyphicon glyphicon-list'></i><span>Tin tức</span>
+                        </a>
+                    </li>
+                    <li class='treeview'>
+                        <a href='SanPhamController'>
+                            <i class='fa fa-archive'></i><span>Sản phẩm</span>
+                        </a>
+                    </li>
+                    <li class='header'>QUẢN LÝ BÁN HÀNG</li>
+                    <li class='treeview'>
+                        <a href='KhuyenMaiController'>
+                            <i class='fa fa-newspaper'></i> <span>Khuyến mãi</span>
+                        </a>
+                    </li>
+                    <li class='treeview'>
+                        <a href='HoTroController'>
+                            <i class='fa fa-envelope'></i> <span>Hổ trợ</span>
+                        </a>
+                    </li>
+                    <li class='treeview'>
+                        <a href='HoaDonController'>
+                            <i class='fa fa-calendar-check'></i> <span>Hóa đơn</span>
+                        </a>
+                    </li>
+                    <li class='treeview'>
+                        <a href='KhachHangController'>
+                            <i class='fa fa-user'></i><span>Khách hàng</span>
+                        </a>
+                    </li>
+                    </li>
+                    <li class='header'>CÀI ĐẶT</li>
+                    <li><a href='<?php echo site_url('DangNhapController/DangXuat');?>'><i
+                                class='fa fa-sign-out-alt text-red'></i>
+                            <span>Đăng xuất</span></a></li>
+                </ul>
+            </section>
+        </aside>
+        <?php endif ?>
         <!----------------  Content  ------------->
         <div class="content-wrapper" style="min-height: 639px;">
             <section class="content">
@@ -189,13 +239,14 @@
                         <!-- small box -->
                         <div class="small-box bg-aqua">
                             <div class="inner">
-                                <h3>25</h3>
+                                <h3><?php echo $countSP['0']['total']?></h3>
                                 <p>Sản phẩm</p>
                                 <div class="icon">
                                     <i class="ion ion-bag"></i>
                                 </div>
                             </div>
-                            <a href="SanPhamController" class="small-box-footer">Danh sách sản phẩm</a>
+                            <a href="<?php echo base_url(); ?>index.php/SanPhamController" class="small-box-footer">Danh
+                                sách sản phẩm</a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -203,13 +254,14 @@
                         <!-- small box -->
                         <div class="small-box bg-green">
                             <div class="inner">
-                                <h3>2</h3>
+                                <h3><?php echo $countTT['0']['total']?></h3>
                                 <p>Bài viết</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-android-chat "></i>
                             </div>
-                            <a href="TinTucController" class="small-box-footer">Danh sách bài viết</a>
+                            <a href="<?php echo base_url(); ?>index.php/TinTucController" class="small-box-footer">Danh
+                                sách bài viết</a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -217,13 +269,14 @@
                         <!-- small box -->
                         <div class="small-box bg-yellow">
                             <div class="inner">
-                                <h3>13</h3>
-                                <p>Liên hệ</p>
+                                <h3><?php echo $countNV['0']['total']?></h3>
+                                <p>Nhân viên</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-email"></i>
                             </div>
-                            <a href="KhachHangController" class="small-box-footer">Liên hệ khách hàng</a>
+                            <a href="<?php echo base_url(); ?>index.php/NhanVienController"
+                                class="small-box-footer">Liên hệ nhân viên</a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -231,13 +284,14 @@
                         <!-- small box -->
                         <div class="small-box bg-red">
                             <div class="inner">
-                                <h3>33</h3>
-                                <p>Giao Hàng</p>
+                                <h3><?php echo $countGH['0']['total']?></h3>
+                                <p>Đơn giao Hàng</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-cube"></i>
                             </div>
-                            <a href="GiaoHangController" class="small-box-footer">Tình trạng giao hàng</a>
+                            <a href="<?php echo base_url(); ?>index.php/GiaoHangController"
+                                class="small-box-footer">Tình trạng giao hàng</a>
                         </div>
                     </div>
                     <!-- ./col -->
@@ -249,7 +303,7 @@
                     <div class="col-md-12">
                         <div class="box box-info">
                             <div class="box-header with-border">
-                                <h3 class="fa fa-shopping-basket"> Danh sách đơn đặt hàng</h3>
+                                <h3 class="fa fa-shopping-basket"> Danh sách đơn hàng</h3>
                                 <div class="brcb">
                                     <div class="searchbox">
                                         <input type="text" placeholder="Search here">
@@ -263,46 +317,66 @@
                                         <table class="table table-hover table-bordered" style="font-size: 0.9em;">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center" style="width: 20px;">STT</th>
-                                                    <th>Sản phẩm</th>
+                                                    <th class="text-center" style="width: 20px;">MaHD</th>
+                                                    <th>MaKH</th>
                                                     <th>Khách Hàng</th>
-                                                    <th>Điện thoại</th>
+                                                    <!-- <th>Điện thoại</th> -->
                                                     <th>Tổng tiền</th>
-                                                    <th>Ngày đặt</th>
-                                                    <th class="text-center" colspan="2">Xử lý đơn</th>
-                                                    <th class="text-center" colspan="2">Thao tác</th>
+                                                    <th>Ngày lập hóa đơn</th>
+                                                    <th class="text-center">Xử lý đơn</th>
+                                                    <th class="text-center">Thao tác</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($arrResult as $item) : ?>
                                                 <tr>
-                                                    <td class="text-center"><?php echo $item['masp'] ?></td>
-                                                    <td><?php echo $item['tensp'] ?></td>
-                                                    <td>Nguyễn Văn A</td>
-                                                    <td>0332248992</td>
-                                                    <td>30,000,000đ</td>
-                                                    <td>05-11-2021</td>
+                                                    <td class="text-center"><?php echo $item['MaHD'] ?></td>
+                                                    <td><?php echo $item['MaKH'] ?></td>
+                                                    <td><?php echo $item['TenKH'] ?></td>
+                                                    <td><?php echo $item['TongTienTT'] ?> đ</td>
+                                                    <td><?php echo $item['NgayLapHD'] ?></td>
                                                     <td style="text-align: center;">
-                                                        <a class="btn btn-default btn-xs" href=""
-                                                            onclick="return confirm('Xác nhận đơn đặt hàng và chuẩn bị giao hàng ?')"
-                                                            role="button">
+                                                        <button class="btn btn-default btn-xs" role="button"
+                                                            data-toggle="modal" data-target="#myModal">
                                                             <i class="fa fa-check-square"></i> Duyệt đơn
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <a class="btn btn-danger btn-xs" href=""
-                                                            onclick="return confirm('Xác nhận hủy đơn hàng này ?')">
-                                                            <i class="fa fa-trash"></i> Hủy đơn
-                                                        </a>
+                                                        </button>
+                                                        <!-- The Modal -->
+                                                        <form class="modal" id="myModal"
+                                                            action="<?=base_url()?>index.php/AdminController/ThanhToan/?mahd=<?php echo $item['MaHD'] ?>"
+                                                            method="post">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+
+                                                                    <!-- Modal Header -->
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">Thanh toán</h4>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal">&times;</button>
+                                                                    </div>
+
+                                                                    <!-- Modal body -->
+                                                                    <div class="modal-body">
+                                                                        Nhập số tiền nhận
+                                                                        <input type="text" name="tiennhan">
+                                                                    </div>
+
+                                                                    <!-- Modal footer -->
+                                                                    <div class="modal-footer">
+                                                                        <input type="submit" value="Thanh toán"
+                                                                            type="button" class="btn btn-danger">
+                                                                        <button type="button" class="btn btn-danger"
+                                                                            data-dismiss="modal">Close</button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </form>
                                                     </td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-info btn-xs" href="" role="button">
-                                                            <span class="glyphicon glyphicon-eye-open"></span>Xem
-                                                        </a>
-                                                        <a class="btn bg-olive btn-xs" href=""
-                                                            onclick="return confirm('Xác nhận lưu đơn hàng này ?')"
+                                                        <a class="btn btn-info btn-xs"
+                                                            href="<?php echo base_url(); ?>index.php/CTHDController/?mahd=<?php echo $item['MaHD'] ?>"
                                                             role="button">
-                                                            <i class="fa fa-save"></i>Lưu đơn
+                                                            <span class="glyphicon glyphicon-eye-open"></span>Xem
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -318,14 +392,16 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <ul class="pagination">
-                            <li class="hidden-xs"><a>Trang đầu</a></li>
-                            <li><a>Trước</a></li>
-                            <li class="active"><a>1</a></li>
-                            <li><a href="">2</a></li>
-                            <li><a>...</a></li>
-                            <li><a href="">5</a></li>
-                            <li><a href="">Sau</a></li>
-                            <li class="hidden-xs"><a href="">Trang cuối</a></li>
+                            <li class="hidden-xs"><a
+                                    href="<?php echo base_url() ?>index.php/AdminController/index/1">Trang đầu</a></li>
+                            <?php for ($i=0 ; $i < $SoTrang ; $i++ ) : ?>
+                            <li class=""><a
+                                    href="<?php echo base_url() ?>index.php/AdminController/index/<?php echo $i+1 ?>"><?php echo $i+1 ?></a>
+                            </li>
+                            <?php endfor?>
+                            <li class="hidden-xs"><a
+                                    href="<?php echo base_url() ?>index.php/AdminController/index/<?php echo $SoTrang ?>">Trang
+                                    cuối</a></li>
                         </ul>
                     </div>
                 </div>
@@ -339,5 +415,19 @@
     <!-- AdminLTE App -->
     <script src="<?php echo base_url() ?>js/app.min.js"></script>
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </html>

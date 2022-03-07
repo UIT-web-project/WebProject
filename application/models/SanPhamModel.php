@@ -5,6 +5,32 @@
 	
 	class SanPhamModel extends CI_Model {
 	
+		// get all SP
+		public function getDataAllSP()
+		{
+			$this->db->join('loaisp', 'loaisp.MaLoaiSP = sanpham.maloaisp');
+			$this->db->join('thuonghieu', 'thuonghieu.MaTH = sanpham.math');
+			$this->db->join('thongtinsp', 'thongtinsp.masp = sanpham.masp');
+			$data = $this->db->get('sanpham');
+			$data = $data->result_array();
+			return $data;
+		}
+		public function getDataOnlySP()
+		{
+			$this->db->select('*');
+			$data = $this->db->get('sanpham');
+			$data = $data->result_array();
+			return $data;
+		}
+		public function getDataAllTTSP($masp)
+		{
+			$this->db->select('*');
+			$this->db->join('thongtinsp', 'thongtinsp.masp = sanpham.masp');
+			$this->db->where('sanpham.masp', $masp);
+			$data = $this->db->get('sanpham');
+			$data = $data->result_array();
+			return $data;
+		}
 		// get data
 		public function getDataSP($masp)
 		{
@@ -12,6 +38,17 @@
 			$this->db->join('thuonghieu', 'thuonghieu.MaTH = sanpham.math');
 			$this->db->join('thongtinsp', 'thongtinsp.masp = sanpham.masp');
 			$this->db->where('sanpham.masp', $masp);
+			$data = $this->db->get('sanpham');
+			$data = $data->result_array();
+			return $data;
+		}
+		public function getDataSP_TTSP($masp, $mattsp)
+		{
+			$this->db->join('loaisp', 'loaisp.MaLoaiSP = sanpham.maloaisp');
+			$this->db->join('thuonghieu', 'thuonghieu.MaTH = sanpham.math');
+			$this->db->join('thongtinsp', 'thongtinsp.masp = sanpham.masp');
+			$this->db->where('sanpham.masp', $masp);
+			$this->db->where('thongtinsp.mattsp', $mattsp);
 			$data = $this->db->get('sanpham');
 			$data = $data->result_array();
 			return $data;
@@ -39,23 +76,17 @@
 		{
 			$SoSPTrongTrang = 7;
 			$this->db->select('*');
-			$res = $this->db->get('sanpham');
+			$res = $this->db->get('thongtinsp');
 			$res = $res->result_array();
 			$TongSoSanPham = count($res);
 			$SoTrang = ceil($TongSoSanPham/$SoSPTrongTrang);
 			return $SoTrang;
 		}
 		// xóa thông tin sản phẩm
-		public function XoaTTSP($ttsp, $masp)
+		public function XoaTTSP($ttsp)
 		{
-			$this->db->select('*');
-			$this->db->join($ttsp, $ttsp.'.masp = sanpham.masp');
-			$this->db->where('sanpham.masp', $masp);
-			$data = $this->db->get('sanpham');
-			$data = $data->result_array();
-			$mattsp = $data[0]['mattsp'];
-			return $this->db->delete($ttsp, array('mattsp' => $mattsp));
-			// return $data[0]['mattsp'];
+			$this->db->where('mattsp', $ttsp);
+			$this->db->delete('thongtinsp');
 		}
 		// xóa sản phẩm
 		public function XoaSP($table, $masp)
