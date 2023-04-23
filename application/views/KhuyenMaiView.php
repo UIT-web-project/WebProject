@@ -208,7 +208,6 @@
                                                     <tr>
                                                         <th class="text-center">Mã KM</th>
                                                         <th class="text-center">Số % KM</th>
-                                                        <th class="text-center">SP áp dụng</th>
                                                         <th class="text-center">Ngày bắt đầu</th>
                                                         <th class="text-center">Ngày kết thúc</th>
                                                         <th class="text-center">Tiền tối thiểu</th>
@@ -220,19 +219,20 @@
                                                     <tr>
                                                         <td class="text-center"><?php echo $item['MaKM'] ?></td>
                                                         <td class="text-center"><?php echo $item['SoPTKM'] ?></td>
-                                                        <td class="text-center"><?php echo $item['tensp'] ?></td>
                                                         <td class="text-center"><?php echo $item['TuNgay'] ?></td>
                                                         <td class="text-center"><?php echo $item['DenNgay'] ?></td>
                                                         <td class="text-center"><?php echo $item['TTienToiThieu'] ?>
                                                         </td>
                                                         <td class="text-center">
-                                                            <a class="btn btn-success btn-xs" href="SuaKMController"
+                                                            <a class="btn btn-success btn-xs"
+                                                                href="<?php echo base_url() ?>index.php/SuaKMController/?makm=<?php echo $item['MaKM']?>"
                                                                 role="button">
                                                                 <span class="glyphicon glyphicon-edit"></span>Sửa
                                                             </a>
                                                         </td>
                                                         <td class="text-center">
-                                                            <a class="btn btn-danger btn-xs" href="KhuyenMaiController"
+                                                            <a class="btn btn-danger btn-xs"
+                                                                href="<?php echo base_url()?>index.php/KhuyenMaiController/XoaKM?makm=<?php echo $item['MaKM']?>"
                                                                 onclick="return confirm('Xác nhận xóa khuyến mãi này ?')"
                                                                 role="button">
                                                                 <span class="glyphicon glyphicon-trash"></span>Xóa

@@ -211,7 +211,6 @@
                                             <thead>
                                                 <tr>
                                                     <th class="text-center">Mã hóa đơn</th>
-                                                    <th>Địa chỉ nhận hàng</th>
                                                     <th>NV giao hàng</th>
                                                     <th class="text-center">SĐT nhân viên</th>
                                                     <th class="text-center">Tình trạng GH</th>
@@ -222,7 +221,6 @@
                                                 <?php foreach ($arrResult as $item) : ?>
                                                 <tr>
                                                     <td class="text-center"><?php echo $item['MaHD'] ?></td>
-                                                    <td>Địa chỉ nhận hàng</td>
                                                     <td><?php echo $item['TenNV'] ?></td>
                                                     <td class="text-center"><?php echo $item['SDT'] ?></td>
                                                     <td class="text-center">

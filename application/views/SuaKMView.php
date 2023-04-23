@@ -180,12 +180,14 @@
             </section>
         </aside>
         <!----------------  Content Sửa khuyến mãi  ------------->
-        <div class="content-wrapper" style="min-height: 639px;">
+        <form class="content-wrapper" style="min-height: 639px;"
+            action="<?php echo base_url() ?>index.php/SuaKMController/SuaKM/?makm=<?php echo $arrResult[0]['MaKM']?>"
+            method="post">
             <section class="content-header">
                 <h1><i class="glyphicon glyphicon-leaf"></i> Chỉnh sửa Khuyến mãi</h1>
                 <div class="breadcrumb">
                     <a class="btn btn-primary btn-sm" href="KhuyenMaiController" role="button">
-                        <span class="glyphicon glyphicon-floppy-save"></span>Lưu
+                        <span class="glyphicon glyphicon-floppy-save"></span><input type="submit" value="Lưu">
                     </a>
                     <a class="btn btn-primary btn-sm" href="KhuyenMaiController" role="button">
                         <span class="glyphicon glyphicon-remove do_nos"></span> Thoát
@@ -202,15 +204,16 @@
                                     <div class="col-md-6" style="padding-left: 0px;">
                                         <div class="form-group">
                                             <label>Số % khuyến mãi</label>
-                                            <input type="number" class="form-control" name="%KM" min="0" step="1"
-                                                max="100" style="width:100%" value="10">
+                                            <input type="number" class="form-control" name="soptkm" min="0" step="1"
+                                                max="100" style="width:100%"
+                                                value="<?php echo $arrResult[0]['SoPTKM']?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6" style="padding-right: 0px;">
                                         <div class="form-group">
                                             <label>Số tiền tối thiểu</label>
-                                            <input type="number" class="form-control" name="SoTTT" min="0" step="5000"
-                                                style="width:100%" value="10000000">
+                                            <input type="number" class="form-control" name="sottt" min="0"
+                                                style=" width:100%" value="<?php echo $arrResult[0]['TTienToiThieu']?>">
                                         </div>
                                     </div>
                                 </div>
@@ -218,34 +221,25 @@
                                     <div class="col-md-6" style="padding-left: 0px;">
                                         <div class="form-group">
                                             <label>Ngày bắt đầu</label>
-                                            <input type="date" class="form-control" name="NgayBD" value="2021-10-20"
-                                                style="width:100%">
+                                            <input type="date" class="form-control" name="ngaybd"
+                                                value="<?php echo $arrResult[0]['TuNgay']?>" style="width:100%">
                                         </div>
                                     </div>
                                     <div class="col-md-6" style="padding-right: 0px;">
                                         <div class="form-group">
                                             <label>Ngày kết thúc</label>
-                                            <input type="date" class="form-control" name="NgayKT" value="2021-11-20"
-                                                style="width:100%">
+                                            <input type="date" class="form-control" name="ngaykt"
+                                                value="<?php echo $arrResult[0]['DenNgay']?>" style="width:100%">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <label>Sản phẩm được giảm giá</label><br>
-                                    <input type="checkbox" name="AllSP" checked>
-                                    <label for="ALLSP" style="font-weight:400;">Tất cả sản phẩm</label>
-                                    <select name="SPGG" class="form-group" style="width:100%" multiple="multiple">
-                                        <option>Iphone 13 Pro Max</option>
-                                        <option>Iphone 12 Pro Max</option>
-                                    </select>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            </form>
-        </div>
+        </form>
+    </div>
     </div>
     <!-- jQuery 2.2.3 -->
     <script src="<?php echo base_url() ?>js/jquery-2.2.3.min.js"></script>

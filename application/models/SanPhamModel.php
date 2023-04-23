@@ -5,6 +5,25 @@
 	
 	class SanPhamModel extends CI_Model {
 	
+		// get all SP
+		public function getDataAllSP()
+		{
+			$this->db->join('loaisp', 'loaisp.MaLoaiSP = sanpham.maloaisp');
+			$this->db->join('thuonghieu', 'thuonghieu.MaTH = sanpham.math');
+			$this->db->join('thongtinsp', 'thongtinsp.masp = sanpham.masp');
+			$data = $this->db->get('sanpham');
+			$data = $data->result_array();
+			return $data;
+		}
+		public function getDataAllTTSP($masp)
+		{
+			$this->db->select('*');
+			$this->db->join('thongtinsp', 'thongtinsp.masp = sanpham.masp');
+			$this->db->where('sanpham.masp', $masp);
+			$data = $this->db->get('sanpham');
+			$data = $data->result_array();
+			return $data;
+		}
 		// get data
 		public function getDataSP($masp)
 		{
